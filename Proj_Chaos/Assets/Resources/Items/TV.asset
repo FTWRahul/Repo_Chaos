@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: TV
   m_EditorClassIdentifier: 
   itemId: 0
-  itemName: 
+  itemName: TV
   itemPrefab: {fileID: 0}
+  itemSize: 2

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2863f9d7bc745834dba3965f13818e6d, type: 3}
   m_Name: PC
   m_EditorClassIdentifier: 
-  itemId: 0
-  itemName: 
+  itemId: 1
+  itemName: PC
   itemPrefab: {fileID: 0}
+  itemSize: 2

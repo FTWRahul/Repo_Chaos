@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2863f9d7bc745834dba3965f13818e6d, type: 3}
   m_Name: Headphone
   m_EditorClassIdentifier: 
-  itemId: 0
-  itemName: 
+  itemId: 5
+  itemName: Headphone
   itemPrefab: {fileID: 0}
   itemSize: 0
