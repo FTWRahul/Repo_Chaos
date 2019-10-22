@@ -6,10 +6,13 @@ using UnityEngine;
 public class PlayerFollower : MonoBehaviour
 {
     public Transform target;
+    private float vAngle;
 
     private void LateUpdate()
     {
-        transform.position = target.TransformPoint(new Vector3(0, 2, -5));
-        transform.rotation = Quaternion.Euler(20, target.eulerAngles.y, 0);
+        transform.position = target.position;
+        vAngle -= Input.GetAxis("Mouse Y");
+        vAngle = Mathf.Clamp(vAngle, 0, 30);
+        transform.rotation = Quaternion.Euler(vAngle, target.eulerAngles.y, 0);
     }
 }

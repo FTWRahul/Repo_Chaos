@@ -17,11 +17,15 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            root.GetChild(0).GetComponent<ItemId>().isAvailable = true;
-            root.GetChild(0).transform.SetParent(null);
+            DropItem();
         }
     }
 
+    public void DropItem()
+    {
+        root.GetChild(0).GetComponent<ItemId>().isAvailable = true;
+        root.GetChild(0).transform.SetParent(null);
+    }
     
     private void OnTriggerEnter(Collider other)
     {
