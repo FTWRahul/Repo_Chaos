@@ -5,16 +5,14 @@ public class Inventory : MonoBehaviour
     [SerializeField] private Transform root;
     private GameObject _itemToPickUp;
     private InputSystem _inputSystem;
-    [SerializeField] public Collider collider;
 
     private void Start()
     {
         _inputSystem = GetComponent<InputSystem>();
         _inputSystem.OnEPressed.AddListener(PickUp);
-        collider = GetComponentInChildren<Collider>();
     }
 
-    public void PickUp()
+    private void PickUp()
     {
         _itemToPickUp.transform.SetParent(root);
         _itemToPickUp.GetComponent<ItemId>().isAvailable = false;
@@ -22,7 +20,7 @@ public class Inventory : MonoBehaviour
         _inputSystem.OnEPressed.AddListener(DropItem);
     }
 
-    public void DropItem()
+    private void DropItem()
     {
         _itemToPickUp.transform.SetParent(null);
         _itemToPickUp.GetComponent<ItemId>().isAvailable = true;
