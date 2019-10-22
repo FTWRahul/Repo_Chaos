@@ -16,7 +16,7 @@ public class MapFactory : MonoBehaviour
             Vector3 rotation = Vector3.zero;
             rotation.y = randRot * 90;
             int rand = Random.Range(0, sectionPrefab.Count);
-            GameObject tempGo = Instantiate(sectionPrefab[rand], spawnPositions[i].position, Quaternion.Euler(rotation));
+            GameObject tempGo = Instantiate(sectionPrefab[rand], spawnPositions[i].position, Quaternion.Euler(rotation), transform);
             if (tempGo.GetComponent<Section>() != null)
             {
                 tempGo.GetComponent<Section>().Inti();
