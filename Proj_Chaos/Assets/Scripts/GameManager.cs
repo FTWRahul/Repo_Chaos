@@ -10,6 +10,7 @@ public class GameManager : Singleton<GameManager>
     {
         PREGAME,
         RUNNING,
+        OPENLIST,
         PAUSED
     }
     
@@ -50,6 +51,13 @@ public class GameManager : Singleton<GameManager>
         {
             TogglePause();
         }
+
+        if (currentGameState == GameState.PAUSED) return;
+        
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            ToggleList();
+        }
     }
     
     public void UpdateState(GameState state)
@@ -64,6 +72,10 @@ public class GameManager : Singleton<GameManager>
                 break;
             
             case GameState.RUNNING:
+                Time.timeScale = 1f;
+                break;
+            
+            case GameState.OPENLIST:
                 Time.timeScale = 1f;
                 break;
             
@@ -129,6 +141,11 @@ public class GameManager : Singleton<GameManager>
     public void TogglePause()
     {
         UpdateState(currentGameState == GameState.RUNNING ? GameState.PAUSED : GameState.RUNNING);
+    }
+    
+    private void ToggleList()
+    {
+        UpdateState(currentGameState == GameState.RUNNING? GameState.OPENLIST: GameState.RUNNING);
     }
     
     public void QuitGame()
