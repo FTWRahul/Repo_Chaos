@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142609603}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.79, y: 0, z: 9.82}
+  m_LocalPosition: {x: -0.18, y: 0, z: 1.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 505952558114817999}
@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519060693}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.79, y: -0.08399999, z: 9.67}
+  m_LocalPosition: {x: -0.18000007, y: -0.08399999, z: 1.6700006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 505952558114817999}
@@ -69,7 +69,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519060693}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.25, y: 2, z: 2}
@@ -89,8 +89,8 @@ GameObject:
   - component: {fileID: 505952558114817992}
   - component: {fileID: 1037741227}
   - component: {fileID: 1037741232}
-  - component: {fileID: 1037741231}
   - component: {fileID: 23942564}
+  - component: {fileID: 352369329}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -293,7 +293,7 @@ MonoBehaviour:
     m_TypeName: Events+EventCharacterAbleSlap, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   radius: 5
-  timeBetweenSlaps: 0
+  timeBetweenSlaps: 2
   timeIncapacitated: 3
   slapForce: 500
 --- !u!54 &1037741232
@@ -312,20 +312,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 3
---- !u!136 &1037741231
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505952558114817993}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &23942564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,3 +325,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 142609604}
+--- !u!136 &352369329
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505952558114817993}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
