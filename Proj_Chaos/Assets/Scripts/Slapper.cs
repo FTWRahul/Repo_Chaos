@@ -24,7 +24,7 @@ public class Slapper : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
 
-    private void Slap()
+    public void Slap()
     {
         if (!_canSlap) return;
 

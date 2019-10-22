@@ -571,8 +571,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9140260579408342333, guid: e7ae304f9f3af1d40bf9d373c59db4af,
+        type: 3}
+      propertyPath: OnLMBPressed.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140260579408342333, guid: e7ae304f9f3af1d40bf9d373c59db4af,
+        type: 3}
+      propertyPath: OnLMBPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140260579408342333, guid: e7ae304f9f3af1d40bf9d373c59db4af,
+        type: 3}
+      propertyPath: OnLMBPressed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140260579408342333, guid: e7ae304f9f3af1d40bf9d373c59db4af,
+        type: 3}
+      propertyPath: OnLMBPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1326493631}
+    - target: {fileID: 9140260579408342333, guid: e7ae304f9f3af1d40bf9d373c59db4af,
+        type: 3}
+      propertyPath: OnLMBPressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Slap
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140260579408342333, guid: e7ae304f9f3af1d40bf9d373c59db4af,
+        type: 3}
+      propertyPath: OnLMBPressed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7ae304f9f3af1d40bf9d373c59db4af, type: 3}
+--- !u!114 &1326493631 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2032236652, guid: e7ae304f9f3af1d40bf9d373c59db4af,
+    type: 3}
+  m_PrefabInstance: {fileID: 1326493630}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d798b11516ade469cac1d5f030d2de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1326493633 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6524553060948681676, guid: e7ae304f9f3af1d40bf9d373c59db4af,
