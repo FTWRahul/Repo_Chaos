@@ -19,10 +19,11 @@ public class NavMeshAgentMover : MonoBehaviour
         if (other.GetComponent<ItemId>())
         {
             ItemId item = other.GetComponent<ItemId>();
-
+            
             if (item.isAvailable) //also check if this item is item that i'm looking for
             {
-                OnEPressed.Invoke();
+               
+                Invoke("Invokerboop", 0.1f);
             }
         }
         else if( other.GetComponent<Slapper>())
@@ -30,5 +31,11 @@ public class NavMeshAgentMover : MonoBehaviour
             OnLMBPressed.Invoke();
         }
         
+    }
+
+    public void Invokerboop()
+    {
+        OnEPressed.Invoke();
+
     }
 }
