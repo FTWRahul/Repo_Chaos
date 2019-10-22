@@ -5,7 +5,7 @@ using UnityEngine;
 public class MainMenu : MonoBehaviour
 {
     public Events.EventFadeComplete onMainMenuFadeComplete;
-
+    
     private Animation _mainMenuAnimator;
     [SerializeField] private AnimationClip fadeInAnimationClip;
     [SerializeField] private AnimationClip fadeOutAnimationClip;
