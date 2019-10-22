@@ -3,12 +3,11 @@ using UnityEngine;
 
 public class ItemsDatabase : Singleton<ItemsDatabase>
 {
-    
     public Dictionary<int, Item> database = new Dictionary<int, Item>();
-    
-    private void Awake()
+
+    protected override void Awake()
     {
-       
+        base.Awake();
         Init();
     }
     
@@ -22,5 +21,6 @@ public class ItemsDatabase : Singleton<ItemsDatabase>
             Item newItem = new Item(item);
             database.Add(newItem.itemId, newItem);
         }
+        Debug.Log(database[5].itemName);
     }
 }

@@ -19,6 +19,7 @@ public class Singleton<T> : MonoBehaviour where T: Singleton<T>
         }
         else
         {
+            Debug.Log("Instance created");
             _instance = (T) this;
         }
     }
