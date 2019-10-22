@@ -4,33 +4,24 @@ public class Inventory : MonoBehaviour
 {
     [SerializeField] private Transform root;
     private GameObject _itemToPickUp;
-    private InputSystem _inputSystem;
 
-    private void Start()
+    public void OnPickUpPressed()
     {
-        _inputSystem = GetComponent<InputSystem>();
-        _inputSystem.OnEPressed.AddListener(PickUp);
-    }
-
-    private void PickUp()
-    {
-        if (_itemToPickUp != null)
+        if (root.childCount == 0)
         {
+            if (_itemToPickUp == null) return;
+            
             _itemToPickUp.transform.SetParent(root);
             _itemToPickUp.transform.localPosition = Vector3.zero;
             _itemToPickUp.GetComponent<ItemId>().isAvailable = false;
-            _inputSystem.OnEPressed.RemoveListener(PickUp);
-            _inputSystem.OnEPressed.AddListener(DropItem);
+        }
+        else
+        {
+            root.GetChild(0).GetComponent<ItemId>().isAvailable = true;
+            root.GetChild(0).transform.SetParent(null);
         }
     }
 
-    private void DropItem()
-    {
-        root.GetChild(0).GetComponent<ItemId>().isAvailable = true;
-        root.GetChild(0).transform.SetParent(null);
-        _inputSystem.OnEPressed.RemoveListener(DropItem);
-        _inputSystem.OnEPressed.AddListener(PickUp);
-    }
     
     private void OnTriggerEnter(Collider other)
     {
@@ -46,6 +37,9 @@ public class Inventory : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //close pick up window
-        _itemToPickUp = null;
+        if (other.gameObject == _itemToPickUp)
+        {
+            _itemToPickUp = null;
+        }
     }
 }
