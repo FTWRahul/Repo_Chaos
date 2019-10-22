@@ -5,19 +5,32 @@ using UnityEngine;
 
 public class Shelf : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    public List<Transform> smallItemPosition;
+    public List<Transform> mediumItemPosition;
+    public List<Transform> largeItemPosition;
 
+    public void GenerateItems(Item item)
+    {
+        if (item.typeSize == TypeSize.SMALL)
+        {
+            PlaceItem(smallItemPosition, item);
+        }
+        else if (item.typeSize == TypeSize.MEDIUM)
+        {
+            PlaceItem(mediumItemPosition, item);
+        }
+        else if (item.typeSize == TypeSize.LARGE)
+        {
+            PlaceItem(largeItemPosition, item);
+        }
     }
 
-    // Update is called once per frame
-    public void OnCollisionStay(Collision other)
+    public void PlaceItem(List<Transform> positions, Item item)
     {
-        if (other.collider.CompareTag("Shelf"))
+        for (int i = 0; i < positions.Count; i++)
         {
-            Debug.Log("BOOP");
-            Destroy(gameObject);
+            ItemId tempGo = Instantiate(item.itemPrefab, positions[i].position, Quaternion.identity).GetComponent<ItemId>();
+            tempGo.Init(item.itemId);
         }
     }
 }

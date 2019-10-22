@@ -22,21 +22,26 @@ public class MapGenerator : MonoBehaviour
       //going through the list of items
       for (int i = 0; i < shelfPrefabs.Count; i++)
       {
+         int rand = Random.Range(0, shelfPrefabs.Count);
          //getting the box collider
-         BoxCollider myCollider =  shelfPrefabs[i].AddComponent<BoxCollider>();
+         BoxCollider myCollider =  shelfPrefabs[rand].GetComponent<BoxCollider>();
          Vector3 checkRotation = Vector3.zero;
+         Vector3 forwardVector = Vector3.zero;
+         GameObject lastSpawnned;
+         //checkRotation.y += 90;
          for (int j = 0; j < 4; j++)
          {
-            Collider[] colArry = Physics.OverlapBox(startPoint.position + new Vector3(0, .5f),
-               myCollider.size / 2,
-               Quaternion.Euler(checkRotation), myLayerMask);
-            Debug.Log(colArry.Length);
-           if(!Physics.CheckBox(startPoint.position + new Vector3(0, .5f),
+            int rotRand = Random.Range(0, 3);
+            checkRotation.y = rotRand * 90;
+            Debug.Log("Rotation is : " + checkRotation);
+            if(!Physics.CheckBox(startPoint.position + new Vector3(0, .5f),
                myCollider.size,
                Quaternion.Euler(checkRotation), myLayerMask))
            {
-              GameObject tempGo = Instantiate(shelfPrefabs[i], startPoint.position + new Vector3(0, 0.5f), Quaternion.Euler(checkRotation));
+              GameObject tempGo = Instantiate(shelfPrefabs[rand], startPoint.position + new Vector3(0, 0.5f), Quaternion.Euler(checkRotation));
               //DestroyImmediate(myCollider, true);
+              lastSpawnned = tempGo;
+              forwardVector = lastSpawnned.transform.forward;
               break;
            }
             /*if (colArry.Length < 1)
@@ -47,8 +52,9 @@ public class MapGenerator : MonoBehaviour
             checkRotation.y += 90;
          }
 
-         startPoint.position += new Vector3(0,0,myCollider.size.z + aileSize);
-         DestroyImmediate(myCollider, true);
+         startPoint.position += forwardVector * aileSize;
+         //startPoint.position += new Vector3(0,0,myCollider.size.z + aileSize);
+         //DestroyImmediate(myCollider, true);
 
       }
       //Function that takes game object and uses its collider to do a cast at hit point.
@@ -66,9 +72,5 @@ public class MapGenerator : MonoBehaviour
          Instantiate(shelfPrefabs[rand], startPoint.position + new Vector3(0, .5f, 0), Quaternion.identity);
       }
    }
-
-   public void OnDrawGizmos()
-   {
-      //Gizmos.DrawCube(Vector3.zero, shelfPrefabs[0].GetComponent<BoxCollider>().size);
-   }
+   
 }
