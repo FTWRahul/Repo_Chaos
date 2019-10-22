@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 4
   itemName: Tablet
-  itemPrefab: {fileID: 0}
-  itemSize: 0
+  itemPrefab: {fileID: 4153414680352874865, guid: 9288f3b0e9816c34a9c3bac659539708,
+    type: 3}
+  typeSize: 0

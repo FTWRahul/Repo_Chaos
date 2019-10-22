@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public enum ItemSize
+public enum TypeSize
 {
         SMALL,
         MEDIUM,
@@ -13,6 +13,6 @@ public class ItemSO : ScriptableObject
     public int itemId;
     public string itemName;
     public GameObject itemPrefab;
-    public ItemSize itemSize;
+    public TypeSize typeSize;
 
 }

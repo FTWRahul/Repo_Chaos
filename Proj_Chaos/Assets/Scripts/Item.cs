@@ -7,13 +7,13 @@ public class Item
     public int itemId;
     public string itemName;
     public GameObject itemPrefab;
-    public ItemSize itemSize;
+    public TypeSize typeSize;
     
     public Item(ItemSO item)
     {
         itemId = item.itemId;
         itemName = item.itemName;
         itemPrefab = item.itemPrefab;
-        itemSize = item.itemSize;
+        typeSize = item.typeSize;
     }
 }
