@@ -1,23 +1,14 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemsDatabase : MonoBehaviour
+public class ItemsDatabase : Singleton<ItemsDatabase>
 {
-    public static ItemsDatabase Instance { get; private set; }
     
     public Dictionary<int, Item> database = new Dictionary<int, Item>();
     
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        
+       
         Init();
     }
     

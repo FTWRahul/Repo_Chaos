@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2863f9d7bc745834dba3965f13818e6d, type: 3}
   m_Name: Laptop
   m_EditorClassIdentifier: 
-  itemId: 6
+  itemId: 8
   itemName: Laptop
   itemPrefab: {fileID: 0}
   itemSize: 1
