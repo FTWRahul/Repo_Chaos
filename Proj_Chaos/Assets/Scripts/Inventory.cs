@@ -16,16 +16,20 @@ public class Inventory : MonoBehaviour
 
     public void PickUp()
     {
-        _itemToPickUp.transform.SetParent(root);
-        _itemToPickUp.GetComponent<ItemId>().isAvailable = false;
-        _inputSystem.OnEPressed.RemoveListener(PickUp);
-        _inputSystem.OnEPressed.AddListener(DropItem);
+        if (_itemToPickUp != null)
+        {
+            _itemToPickUp.transform.SetParent(root);
+            _itemToPickUp.transform.localPosition = Vector3.zero;
+            _itemToPickUp.GetComponent<ItemId>().isAvailable = false;
+            _inputSystem.OnEPressed.RemoveListener(PickUp);
+            _inputSystem.OnEPressed.AddListener(DropItem);
+        }
     }
 
     public void DropItem()
     {
-        _itemToPickUp.transform.SetParent(null);
-        _itemToPickUp.GetComponent<ItemId>().isAvailable = true;
+        root.GetChild(0).GetComponent<ItemId>().isAvailable = true;
+        root.GetChild(0).transform.SetParent(null);
         _inputSystem.OnEPressed.RemoveListener(DropItem);
         _inputSystem.OnEPressed.AddListener(PickUp);
     }
@@ -35,7 +39,7 @@ public class Inventory : MonoBehaviour
         // open pick up window
         ItemId item = other.GetComponent<ItemId>();
 
-        if (item.isAvailable)
+        if (item != null && item.isAvailable)
         {
             _itemToPickUp = item.gameObject;
         }
