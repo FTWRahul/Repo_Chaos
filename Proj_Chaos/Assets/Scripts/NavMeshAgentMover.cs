@@ -21,18 +21,19 @@ public class NavMeshAgentMover : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        ItemId item = other.GetComponent<ItemId>();
-
-        if (item != null) //also check if this item is item that i'm looking for
+        if (other.GetComponent<ItemId>())
         {
-            if (item.isAvailable)
+            ItemId item = other.GetComponent<ItemId>();
+
+            if (item.isAvailable) //also check if this item is item that i'm looking for
             {
                 OnEPressed.Invoke();
             }
-            else
-            {
-                OnLMBPressed.Invoke();
-            }
         }
+        else if( other.GetComponent<Slapper>())
+        {
+            OnLMBPressed.Invoke();
+        }
+        
     }
 }
