@@ -2,14 +2,20 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NavMeshAgentMover : MonoBehaviour
+public class AgentBehaviour : MonoBehaviour
 {
-    public NavMeshAgent _navMeshAgent;
-    
     public Events.EventEPressed OnEPressed;
     public Events.EventLMBPressed OnLMBPressed;
 
-    private void OnEnable()
+    private NavMeshAgent _navMeshAgent;
+
+    private void Start()
+    {
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+    }
+    
+
+    public void SetDestination(Transform pos)
     {
         _navMeshAgent.SetDestination(transform.position - new Vector3(25, 0, 0));
     }
