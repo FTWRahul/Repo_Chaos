@@ -1,33 +1,38 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
 
+[RequireComponent(typeof(PickUp))]
 public class Slapper : MonoBehaviour
 {
     public Events.EventCharacterSlapped OnCharacterSlapped;
-    public Events.EventCharacterAbleSlap OnCharacterAbleSlap;
+    public Events.EventCharacterAbleSlap OnCharacterEndSlap;
     
-    public float radius;
-    public float timeBetweenSlaps;
-    public float timeIncapacitated;
-    public float slapForce;
-
+    [SerializeField] private float radius;
+    [SerializeField] private float timeBetweenSlaps;
+    [SerializeField] private float timeIncapacitated;
+    [SerializeField] private float slapForce;
+    
+    [SerializeField] private bool canSlap = true;
     private Rigidbody _rb;
-    private bool _canSlap = true;
-
+    private PickUp _pickUp;
 
     private void Start()
     {
+        _pickUp = GetComponent<PickUp>();
         _rb = GetComponent<Rigidbody>();
     }
 
-    public void Slap()
+    public void OnSlapPressed()
     {
-        if (!_canSlap) return;
+        if (canSlap)
+        {
+            Slap();
+        }
+    }
 
+    private void Slap()
+    {
+        //should be on anim
         StartCoroutine(DidSlap());
         
         Collider[] overlappedObjects = Physics.OverlapSphere(transform.position, radius);
@@ -45,33 +50,40 @@ public class Slapper : MonoBehaviour
 
     private IEnumerator DidSlap()
     {
-        ChangeSlap(false);
+        ChangeBoolStates(false);
         
         yield return new WaitForSeconds(timeBetweenSlaps);
-        
-        ChangeSlap(true);
+
+        ChangeBoolStates(true);
     }
 
-    public void ChangeSlap(bool shouldSlap)
+    public void ChangeSlapBool(bool canSlap)
     {
-        _canSlap = shouldSlap;
+        this.canSlap = canSlap;
     }
-
+    
     private IEnumerator Slapped(Vector3 dir)
     {
-        ChangeSlap(false);
-        
+        ChangeBoolStates(false);
         OnCharacterSlapped.Invoke();
-
+        
+        //Physics
         _rb.isKinematic = false;
         _rb.AddForce(dir.normalized * slapForce, ForceMode.Impulse);
         
         yield return new WaitForSeconds(timeIncapacitated);
         
-        OnCharacterAbleSlap.Invoke();
-
+        OnCharacterEndSlap.Invoke();
+        
+        //Physics
         _rb.isKinematic = true;
         
-        ChangeSlap(true);
+        ChangeBoolStates(true);
+    }
+
+    private void ChangeBoolStates(bool canDo)
+    {
+        ChangeSlapBool(canDo);
+        _pickUp.ChangePickupBool(canDo);
     }
 }

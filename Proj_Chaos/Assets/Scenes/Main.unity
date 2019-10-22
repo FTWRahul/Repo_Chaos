@@ -346,7 +346,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 1.6842166e+22, z: 2.9392982e+29, w: 0}
+  m_BoundingSphereOverride: {x: 1.782e-42, y: 1.05e-43, z: 1, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -364,12 +364,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!195 &924932228 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 505952558114817995, guid: b2763f7a371730641985ae3bd947666d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1930164959}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,11 +677,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 505952558114817992, guid: b2763f7a371730641985ae3bd947666d,
-        type: 3}
-      propertyPath: _navMeshAgent
-      value: 
-      objectReference: {fileID: 924932228}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2763f7a371730641985ae3bd947666d, type: 3}
 --- !u!1 &2012355225

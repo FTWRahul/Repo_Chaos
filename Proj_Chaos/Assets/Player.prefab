@@ -191,7 +191,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Events+EventCharacterSlapped, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  OnCharacterAbleSlap:
+  OnCharacterEndSlap:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6524553060948681664}
@@ -254,7 +254,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2032236652}
-        m_MethodName: Slap
+        m_MethodName: OnSlapPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -279,6 +279,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 6830069450345813158}
+  canDoAction: 1
+  hasItem: 0
 --- !u!136 &1020704920
 CapsuleCollider:
   m_ObjectHideFlags: 0
