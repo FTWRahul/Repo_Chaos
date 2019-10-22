@@ -4,15 +4,10 @@ using UnityEngine.AI;
 
 public class NavMeshAgentMover : MonoBehaviour
 {
-    private NavMeshAgent _navMeshAgent;
+    public NavMeshAgent _navMeshAgent;
     
     public Events.EventEPressed OnEPressed;
     public Events.EventLMBPressed OnLMBPressed;
-
-    private void Start()
-    {
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-    }
 
     private void OnEnable()
     {

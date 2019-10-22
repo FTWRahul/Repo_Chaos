@@ -21,6 +21,5 @@ public class ItemsDatabase : Singleton<ItemsDatabase>
             Item newItem = new Item(item);
             database.Add(newItem.itemId, newItem);
         }
-        Debug.Log(database[5].itemName);
     }
 }
