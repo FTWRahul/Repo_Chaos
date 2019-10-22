@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 505952558114817997}
   - component: {fileID: 505952558114817995}
   - component: {fileID: 505952558114817992}
+  - component: {fileID: 1037741227}
+  - component: {fileID: 1037741232}
+  - component: {fileID: 1037741231}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -114,3 +117,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c744b4f4267d6524ebda107895b10cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1037741227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505952558114817993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d798b11516ade469cac1d5f030d2de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 5
+  timeBetweenSlaps: 0
+  timeIncapacitated: 3
+  slapForce: 500
+  isPlayer: 0
+--- !u!54 &1037741232
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505952558114817993}
+  serializedVersion: 2
+  m_Mass: 50
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 3
+--- !u!136 &1037741231
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505952558114817993}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

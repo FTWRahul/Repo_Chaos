@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private Transform root;
     private GameObject _itemToPickUp;
     private InputSystem _inputSystem;
+    [SerializeField] public Collider collider;
 
     private void Start()
     {
         _inputSystem = GetComponent<InputSystem>();
         _inputSystem.OnEPressed.AddListener(PickUp);
+        collider = GetComponentInChildren<Collider>();
     }
 
     public void PickUp()
