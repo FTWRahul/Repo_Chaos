@@ -194,7 +194,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c744b4f4267d6524ebda107895b10cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _navMeshAgent: {fileID: 505952558114817995}
   OnEPressed:
     m_PersistentCalls:
       m_Calls:
@@ -297,6 +296,7 @@ MonoBehaviour:
   timeBetweenSlaps: 2
   timeIncapacitated: 3
   slapForce: 500
+  canSlap: 1
 --- !u!54 &1037741232
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -325,9 +325,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13086f4b3c939c7438f92caf968dc051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  root: {fileID: 142609604}
   canDoAction: 1
   hasItem: 0
+  root: {fileID: 142609604}
 --- !u!136 &352369329
 CapsuleCollider:
   m_ObjectHideFlags: 0
