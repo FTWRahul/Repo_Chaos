@@ -11,6 +11,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private PauseMenu pauseMenu;
     [SerializeField] private PaperListMenu listMenu;
     [SerializeField] private MainMenu mainMenu;
+    [SerializeField] private EndMenu endMenu;
     [SerializeField] private Camera dummyCamera;
 
 
@@ -45,6 +46,7 @@ public class UIManager : Singleton<UIManager>
         pauseMenu.gameObject.SetActive(currentState == GameManager.GameState.PAUSED);
         mainMenu.gameObject.SetActive(currentState == GameManager.GameState.MENU);
         listMenu.gameObject.SetActive(currentState == GameManager.GameState.RUNNING);
+        endMenu.gameObject.SetActive(currentState == GameManager.GameState.END);
     }
     
 

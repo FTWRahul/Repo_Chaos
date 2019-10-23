@@ -167,6 +167,7 @@ public class GameManager : Singleton<GameManager>
 
     public void RestartGame()
     {
-        UpdateState(GameState.PREGAME);
+        StartGame();
+        UpdateState(GameState.RUNNING);
     }
 }

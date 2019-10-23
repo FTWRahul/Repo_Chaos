@@ -52,8 +52,11 @@ public class AudioManager : Singleton<AudioManager>
     private void OnDisable()
     {
         GameManager.Instance.OnGameStateChanged.RemoveListener(HandleGameStateChanged);
-        _characterController.GetComponent<ExitCheck>().OnRightItem.AddListener(RightItem);
-        _characterController.GetComponent<ExitCheck>().OnWrongItem.AddListener(WrongItem);
+        if (_characterController != null)
+        {
+            _characterController.GetComponent<ExitCheck>().OnRightItem.AddListener(RightItem);
+            _characterController.GetComponent<ExitCheck>().OnWrongItem.AddListener(WrongItem);
+        }
     }
 
     private void RightItem()
