@@ -88,7 +88,7 @@ public class Slapper : MonoBehaviour
     private void ChangeBoolStates()
     {
         ChangeSlapBool(!canSlap);
-        _pickUp.ChangePickupBool(!canSlap);
+        _pickUp.ChangePickupBool(canSlap);
     }
 
     public void ChangeSlapBool(bool canDoAction)
