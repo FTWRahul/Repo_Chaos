@@ -2227,6 +2227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c60e19cf29f994c86ea04a8499f41d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuAnimator: {fileID: 5377012760198443584}
   fadeInAnimationClip: {fileID: 7400000, guid: 7e54b9cd1b1f1b341bc02ecc60f4c47c, type: 2}
   fadeOutAnimationClip: {fileID: 7400000, guid: b8c76e056fa643f4a911dfbe32e7e0c3,
     type: 2}
@@ -2239,10 +2240,11 @@ Animation:
   m_GameObject: {fileID: 1328791528}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
+  m_Animation: {fileID: 7400000, guid: af5d964feb87dcd49a040f93b5e3a220, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 7e54b9cd1b1f1b341bc02ecc60f4c47c, type: 2}
   - {fileID: 7400000, guid: b8c76e056fa643f4a911dfbe32e7e0c3, type: 2}
+  - {fileID: 7400000, guid: af5d964feb87dcd49a040f93b5e3a220, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0

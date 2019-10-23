@@ -39,7 +39,7 @@ public class MainMenu : MonoBehaviour
 
     private void FadeIn()
     {
-        Debug.Log("here");
+        mainMenuAnimator.Stop();
         mainMenuAnimator.clip = fadeInAnimationClip;
         mainMenuAnimator.Play();
     }
