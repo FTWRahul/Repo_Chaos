@@ -58,8 +58,9 @@ public class UIManager : Singleton<UIManager>
         GameManager.Instance.QuitGame();
     }
 
-    public void PreGame()
+    public void StartGame()
     {
-        GameManager.Instance.UpdateState(GameManager.GameState.PREGAME);
+        GameManager.Instance.StartGame();
+        GameManager.Instance.UpdateState(GameManager.GameState.RUNNING);
     }
 }

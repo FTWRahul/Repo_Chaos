@@ -105,7 +105,7 @@ public class GameManager : Singleton<GameManager>
     public void LoadLevel(string levelName)
     {
         //SceneManager.LoadScene() - blocking call
-        AsyncOperation ao = SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
+        AsyncOperation ao = SceneManager.LoadSceneAsync(levelName);
         
         if(ao == null) 
         {
@@ -147,7 +147,6 @@ public class GameManager : Singleton<GameManager>
     
     public void StartGame()
     {
-        SceneManager.UnloadSceneAsync(mainMenuName);
         LoadLevel(mainLevelName);
     }
     
