@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -20,6 +21,7 @@ public class CharacterAnimation : MonoBehaviour
     private static readonly int Slap = Animator.StringToHash("Slap");
     private static readonly int Slapped = Animator.StringToHash("Slapped");
     private static readonly int HasItem = Animator.StringToHash("HasItem");
+
 
     public void Awake()
     {
