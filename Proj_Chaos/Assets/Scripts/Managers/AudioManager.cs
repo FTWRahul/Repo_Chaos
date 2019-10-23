@@ -73,20 +73,28 @@ public class AudioManager : Singleton<AudioManager>
 
     private void HandleGameStateChanged(GameManager.GameState previousState, GameManager.GameState currentState)
     {
-        Debug.Log(previousState + " " + currentState);
+
         if (currentState == GameManager.GameState.RUNNING)
         {
             crowdSource.Play();
 
-            musicSource.Stop();
-            if( musicSource.clip != elevatorInGameClip)
+            if (musicSource.clip != elevatorInGameClip)
+            {
+                musicSource.Stop();
                 musicSource.clip = elevatorInGameClip;
-            musicSource.Play();
+                musicSource.Play();
+            }
+                
+            
+            if (previousState == GameManager.GameState.PREGAME || previousState == GameManager.GameState.MENU)
+            {
+                musicSource.Stop();
+                musicSource.Play();
+            }
         }
         else if (currentState == GameManager.GameState.PAUSED)
         {
             crowdSource.Stop();
-            musicSource.Play();
         }
         else if (currentState == GameManager.GameState.END)
         {
