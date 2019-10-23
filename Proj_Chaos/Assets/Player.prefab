@@ -12,13 +12,15 @@ GameObject:
   - component: {fileID: 6524553060948681677}
   - component: {fileID: 6524553060948681666}
   - component: {fileID: -1562039085242716066}
-  - component: {fileID: 6524553060948681664}
   - component: {fileID: 6524553060948681679}
-  - component: {fileID: 6524553060948681678}
-  - component: {fileID: 2032236652}
-  - component: {fileID: 9140260579408342333}
-  - component: {fileID: 8247179815549446149}
   - component: {fileID: 1020704920}
+  - component: {fileID: 6524553060948681678}
+  - component: {fileID: 6524553060948681664}
+  - component: {fileID: 9140260579408342333}
+  - component: {fileID: 2032236652}
+  - component: {fileID: 8247179815549446149}
+  - component: {fileID: 8850360764414757878}
+  - component: {fileID: 6587880589187107031}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -104,20 +106,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 3
---- !u!114 &6524553060948681664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6524553060948681665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7f797f88bcf5b440b9929ef1b2b843b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseSensitivity: 50
-  moveSpeed: 10
 --- !u!143 &6524553060948681679
 CharacterController:
   m_ObjectHideFlags: 0
@@ -136,6 +124,20 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &1020704920
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524553060948681665}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!208 &6524553060948681678
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -152,6 +154,64 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &6524553060948681664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524553060948681665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f797f88bcf5b440b9929ef1b2b843b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensitivity: 50
+  moveSpeed: 10
+--- !u!114 &9140260579408342333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524553060948681665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c78c054e231154fbf731a6fd82b532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEPressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8247179815549446149}
+        m_MethodName: OnPickUpPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Events+EventEPressed, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnLMBPressed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2032236652}
+        m_MethodName: OnSlapPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Events+EventLMBPressed, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &2032236652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,50 +282,7 @@ MonoBehaviour:
   timeBetweenSlaps: 2
   timeIncapacitated: 3
   slapForce: 500
---- !u!114 &9140260579408342333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6524553060948681665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85c78c054e231154fbf731a6fd82b532, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnEPressed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8247179815549446149}
-        m_MethodName: OnPickUpPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: Events+EventEPressed, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnLMBPressed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2032236652}
-        m_MethodName: OnSlapPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: Events+EventLMBPressed, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+  canSlap: 1
 --- !u!114 &8247179815549446149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,23 +295,120 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13086f4b3c939c7438f92caf968dc051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  root: {fileID: 6830069450345813158}
   canDoAction: 1
   hasItem: 0
---- !u!136 &1020704920
-CapsuleCollider:
+  root: {fileID: 6830069450345813158}
+--- !u!114 &8850360764414757878
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6524553060948681665}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 735fa1e5f55607e40aaceba0268ae3fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slapClip: {fileID: 0}
+  pickupClip: {fileID: 0}
+  dropClip: {fileID: 0}
+--- !u!82 &6587880589187107031
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524553060948681665}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6647853287234485561
 GameObject:
   m_ObjectHideFlags: 0

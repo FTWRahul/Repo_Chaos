@@ -151,11 +151,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   systemPrefabs:
   - {fileID: 1368435504543104, guid: f094f1093dc5208478ed1c2897daa9eb, type: 3}
+  - {fileID: 6121752884214802411, guid: 7052cfe1a7b6a094aaf2ca27b4ab08b2, type: 3}
   OnGameStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: Events+EventGameState, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  currentGameState: 1
 --- !u!4 &1726384798
 Transform:
   m_ObjectHideFlags: 0
