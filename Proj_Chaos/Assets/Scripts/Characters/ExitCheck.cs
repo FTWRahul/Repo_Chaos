@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using TMPro;
 
 public class ExitCheck : MonoBehaviour
@@ -16,20 +17,24 @@ public class ExitCheck : MonoBehaviour
             }
             Destroy(other.gameObject, 2f);
         }
-        else if (other.GetComponent<PlayerMover>())
+        else if (other.GetComponent<CharacterController>() != null)
         {
+            Debug.Log("WHAT WHAT");
+            bool isRightItem = false;
             if (other.GetComponent<PickUp>().itemHold != null)
-            {
-                bool isRightItem = false;
+            {            
+                Debug.Log("IN THE BUTT");
+
                 ItemId item =  other.GetComponent<PickUp>().itemHold;
                 for (int i = 0; i < other.GetComponent<QuestGenerator>().itemsToCollect.Count; i++)
                 {
                     if (item.itemId == other.GetComponent<QuestGenerator>().itemsToCollect[i])
                     {
-                        PaperListMenu.Instance.TextOrderedList[i].fontStyle = FontStyles.Strikethrough;
-                        // Do the thing on UI
-                        
-                        // Play the right sound
+                        TextMeshProUGUI text = PaperListMenu.Instance.TextOrderedList[i];
+                        int idtoRemove = other.GetComponent<QuestGenerator>().itemsToCollect[i];
+                        PaperListMenu.Instance.TextOrderedList.Remove(text);
+                        other.GetComponent<QuestGenerator>().itemsToCollect.RemoveAt(i);
+                        text.fontStyle = FontStyles.Strikethrough;
                         isRightItem = true;
                         break;
                     }
@@ -51,8 +56,16 @@ public class ExitCheck : MonoBehaviour
                 int itemID = item.itemId;
                ItemsDatabase.Instance.objectsInScene[itemID]--;
                other.GetComponent<PickUp>().DropItem();
-               item.Vanish();
+               StartCoroutine(StartWithDelay(other, item));
             }
         }
+        
     }
+
+    public IEnumerator StartWithDelay(Collider other, ItemId item)
+    {
+        yield return new WaitForSeconds(.2f);
+        item.Vanish();
+    }
+
 }

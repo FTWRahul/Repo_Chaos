@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2863f9d7bc745834dba3965f13818e6d, type: 3}
-  m_Name: SoundSystem
+  m_Name: Speakers
   m_EditorClassIdentifier: 
   itemId: 6
-  itemName: Sound system
+  itemName: Speakers
   itemPrefab: {fileID: 4232020331458428953, guid: f49d0070ca0b6ee428bd5cb69867060e,
     type: 3}
   typeSize: 1

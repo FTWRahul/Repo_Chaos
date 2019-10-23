@@ -29,7 +29,6 @@ public class PaperListMenu : Singleton<PaperListMenu>
     public void Init()
     {
         QuestGenerator questGen = player.GetComponent<QuestGenerator>();
-        Debug.Log(questGen.itemsToCollect.Count);
         foreach (int itemID in questGen.itemsToCollect)
         {
             TextMeshProUGUI nameText = Instantiate(textPrefab, spawnPosition.transform).GetComponent<TextMeshProUGUI>();
