@@ -4,25 +4,31 @@ using UnityEngine.Serialization;
 [RequireComponent(typeof(Slapper))]
 public class PickUp : MonoBehaviour
 {
+    [FormerlySerializedAs("_itemHold")] public ItemId itemHold;
     public bool canDoAction = true;
     public bool hasItem = false;
 
     public Events.EventCharacterPickup onCharacterPickup;
     public Events.EventCharacterHasItemChange onHasItemChange;
-    // event on OnpickupItem
-    // event onHasItemChange(bool)
-    // event on onDropItem
 
-    
     [SerializeField] private Transform root;
     private GameObject _itemToPickUp;
-    [FormerlySerializedAs("_itemHold")] public ItemId itemHold;
     private Slapper _slapper;
 
-    private void Start()
+    private void Awake()
     {
         _slapper = GetComponent<Slapper>();
+    }
+    
+    private void OnEnable()
+    {
         _slapper.OnCharacterSlapped.AddListener(DropItem);
+    }
+
+    private void OnDisable()
+    {
+        _slapper.OnCharacterSlapped.RemoveListener(DropItem);
+        _slapper.OnCharacterSlapped.RemoveListener(DropItem);
     }
 
     public void OnPickUpPressed()
