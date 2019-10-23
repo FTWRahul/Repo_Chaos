@@ -3156,8 +3156,8 @@ MonoBehaviour:
       PublicKeyToken=null
   radius: 5
   timeBetweenSlaps: 2
-  timeIncapacitated: 0.2
-  slapForce: 400
+  timeIncapacitated: 0.1
+  slapForce: 100
   canSlap: 1
 --- !u!114 &8247179815549446149
 MonoBehaviour:
