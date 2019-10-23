@@ -297,9 +297,9 @@ MonoBehaviour:
     m_TypeName: Events+EventCharacterAbleSlap, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   radius: 5
-  timeBetweenSlaps: 2
-  timeIncapacitated: 3
-  slapForce: 500
+  timeBetweenSlaps: 5
+  timeIncapacitated: 0
+  slapForce: 200
   canSlap: 1
 --- !u!54 &1037741232
 Rigidbody:

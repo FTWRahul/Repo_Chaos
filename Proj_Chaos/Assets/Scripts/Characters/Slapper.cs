@@ -45,6 +45,7 @@ public class Slapper : MonoBehaviour
             if (slapper != null && slapper != this)
             {
                 StartCoroutine(slapper.Slapped(col.transform.position - transform.position));
+                break;
             }
         }
     }

@@ -1649,10 +1649,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcPrefab: {fileID: 505952558114817993, guid: b2763f7a371730641985ae3bd947666d,
     type: 3}
-  spawnAmount: 20
+  spawnAmount: 50
   spawnInterval: 5
-  maxNPCS: 100
-  radius: 10
+  maxNPCS: 400
+  radius: 30
   spawnedNPCS: []
 --- !u!4 &1952675695
 Transform:
@@ -1662,7 +1662,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1952675693}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30, y: 0.5, z: -20}
+  m_LocalPosition: {x: 27, y: 0.5, z: -24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
