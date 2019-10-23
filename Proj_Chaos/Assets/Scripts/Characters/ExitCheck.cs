@@ -18,7 +18,7 @@ public class ExitCheck : MonoBehaviour
                 ItemsDatabase.Instance.objectsInScene[itemID]--; 
                 OnItemRemoved.Invoke();
             }
-            Destroy(other.gameObject, 2f);
+            Destroy(other.gameObject, 5f);
         }
         else if (other.GetComponent<CharacterController>() != null)
         {
