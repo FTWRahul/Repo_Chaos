@@ -32,6 +32,15 @@ public class Shelf : MonoBehaviour
             ItemId tempGo = Instantiate(item.itemPrefab, positions[i].position, transform.rotation).GetComponent<ItemId>();
             tempGo.transform.parent = this.transform;
             tempGo.Init(item.itemId);
+            
+            if(ItemsDatabase.Instance.objectsInScene.ContainsKey(item.itemId))
+            {
+                ItemsDatabase.Instance.objectsInScene[item.itemId]++;
+            }
+            else
+            {
+                ItemsDatabase.Instance.objectsInScene.Add(item.itemId, 1);
+            }
         }
     }
 }

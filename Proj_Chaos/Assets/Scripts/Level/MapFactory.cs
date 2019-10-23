@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class MapFactory : MonoBehaviour
 {
@@ -9,6 +12,11 @@ public class MapFactory : MonoBehaviour
     public static List<Section> spawnnedSections = new List<Section>();
 
     [ContextMenu("GenerateMap")]
+    private void Start()
+    {
+        SpawnShelves();
+    }
+
     public void SpawnShelves()
     {
         for (int i = 0; i < spawnPositions.Count; i++)
@@ -23,6 +31,15 @@ public class MapFactory : MonoBehaviour
                 tempGo.Inti();
                 spawnnedSections.Add(tempGo);
             }
+        }
+    }
+
+    [ContextMenu("Check Items")]
+    public void CheckItemsInScene()
+    {
+        for (int i = 0; i < ItemsDatabase.Instance.objectsInScene.Count; i++)
+        {
+            Debug.Log(ItemsDatabase.Instance.objectsInScene[i]);
         }
     }
 }

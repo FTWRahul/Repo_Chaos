@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(PickUp))]
@@ -76,7 +77,10 @@ public class Slapper : MonoBehaviour
         OnCharacterEndSlap.Invoke();
         
         //Physics
-        _rb.isKinematic = true;
+        if (_rb != null)
+        {
+            _rb.isKinematic = true;
+        }
         
         ChangeBoolStates(true);
     }
@@ -85,5 +89,10 @@ public class Slapper : MonoBehaviour
     {
         ChangeSlapBool(canDo);
         _pickUp.ChangePickupBool(canDo);
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }

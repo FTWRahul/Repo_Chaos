@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Slapper))]
 public class PickUp : MonoBehaviour
@@ -8,7 +9,7 @@ public class PickUp : MonoBehaviour
     
     [SerializeField] private Transform root;
     private GameObject _itemToPickUp;
-    private ItemId _itemHold;
+    [FormerlySerializedAs("_itemHold")] public ItemId itemHold;
     private Slapper _slapper;
 
     private void Start()
@@ -41,12 +42,12 @@ public class PickUp : MonoBehaviour
         //trigger pick up anim
         hasItem = true;
 
-        _itemHold = _itemToPickUp.GetComponent<ItemId>();
-        _itemHold.transform.SetParent(root);
-        _itemHold.transform.localPosition = Vector3.zero;
-        _itemHold.GetComponent<Rigidbody>().isKinematic = true;
+        itemHold = _itemToPickUp.GetComponent<ItemId>();
+        itemHold.transform.SetParent(root);
+        itemHold.transform.localPosition = Vector3.zero;
+        itemHold.GetComponent<Rigidbody>().isKinematic = true;
         
-        _itemHold.isAvailable = false;
+        itemHold.isAvailable = false;
         
         //Should call this method from anim
         ChangePickupBool(true);
@@ -61,10 +62,10 @@ public class PickUp : MonoBehaviour
         //trigger pick up anim
         hasItem = false;
         
-        _itemHold.GetComponent<Rigidbody>().isKinematic = false;
-        _itemHold.isAvailable = true;
-        _itemHold.transform.SetParent(null);
-        _itemHold = null;
+        itemHold.GetComponent<Rigidbody>().isKinematic = false;
+        itemHold.isAvailable = true;
+        itemHold.transform.SetParent(null);
+        itemHold = null;
         
         //Should call this method from anim
         ChangePickupBool(true);

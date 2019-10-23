@@ -4,6 +4,7 @@ using UnityEngine;
 public class ItemsDatabase : Singleton<ItemsDatabase>
 {
     public Dictionary<int, Item> database = new Dictionary<int, Item>();
+    public Dictionary<int, int> objectsInScene = new Dictionary<int, int>();
 
     protected override void Awake()
     {
