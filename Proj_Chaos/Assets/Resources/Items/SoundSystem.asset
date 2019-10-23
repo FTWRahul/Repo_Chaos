@@ -17,3 +17,8 @@ MonoBehaviour:
   itemPrefab: {fileID: 4232020331458428953, guid: f49d0070ca0b6ee428bd5cb69867060e,
     type: 3}
   typeSize: 1
+  boxArt: {fileID: 2800000, guid: f466e46b3fb9c7044a6991d1bde91a38, type: 3}
+  ShelfArt1: {fileID: 2800000, guid: be91b9849b3f63d4d82e26dace17558f, type: 3}
+  ShelfArt2: {fileID: 2800000, guid: ddf9489e4c1c2064aa7af9f30e7eda08, type: 3}
+  ShelfArt3: {fileID: 2800000, guid: dbe5bab621972b5449c318bc2498ded0, type: 3}
+  ShelfArt4: {fileID: 2800000, guid: f683abaffee5b3b41886624bb574846d, type: 3}

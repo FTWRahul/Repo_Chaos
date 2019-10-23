@@ -124,3 +124,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 0
   isAvailable: 1
+  meshRenderer: {fileID: 0}
+  defaultMat: {fileID: 2100000, guid: a28d50ef6b385ad4dbcd7eb4022d32be, type: 2}

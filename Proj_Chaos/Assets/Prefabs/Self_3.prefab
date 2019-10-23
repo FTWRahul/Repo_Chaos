@@ -440,6 +440,9 @@ MonoBehaviour:
   - {fileID: 4710683444296937779}
   - {fileID: 5896624922500103082}
   largeItemPosition: []
+  meshRenderer: {fileID: 0}
+  defaultMat: {fileID: 2100000, guid: b6e26ba9e3621304193cc2fefdfd0f8b, type: 2}
+  shelfType: 2
 --- !u!208 &4726973216404757484
 NavMeshObstacle:
   m_ObjectHideFlags: 0
