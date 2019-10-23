@@ -2893,6 +2893,7 @@ GameObject:
   - component: {fileID: 8247179815549446149}
   - component: {fileID: 3455370340198393399}
   - component: {fileID: 1380588538006269527}
+  - component: {fileID: 4127779063769120517}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3159,6 +3160,7 @@ MonoBehaviour:
   timeBetweenSlaps: 2
   timeIncapacitated: 0.1
   slapForce: 100
+  probabilityOfAbleToSlap: 0
   canSlap: 1
 --- !u!114 &8247179815549446149
 MonoBehaviour:
@@ -3212,6 +3214,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsToCollect: 
   maxItemAmount: 5
+--- !u!114 &4127779063769120517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524553060948681665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07fe388458b7b0849aad31b77483d665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6647853287234485561
 GameObject:
   m_ObjectHideFlags: 0

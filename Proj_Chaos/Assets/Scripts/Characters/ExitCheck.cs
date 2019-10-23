@@ -6,6 +6,8 @@ public class ExitCheck : MonoBehaviour
 {
     public Events.EventWrongItem OnWrongItem;
     public Events.EventRightItem OnRightItem;
+    public Events.EventItemRemoved OnItemRemoved;
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<AgentBehaviour>() != null)
@@ -14,6 +16,7 @@ public class ExitCheck : MonoBehaviour
             {
                 int itemID = other.GetComponent<PickUp>().itemHold.itemId;
                 ItemsDatabase.Instance.objectsInScene[itemID]--; 
+                OnItemRemoved.Invoke();
             }
             Destroy(other.gameObject, 2f);
         }
@@ -56,6 +59,7 @@ public class ExitCheck : MonoBehaviour
                 int itemID = item.itemId;
                ItemsDatabase.Instance.objectsInScene[itemID]--;
                other.GetComponent<PickUp>().DropItem();
+               OnItemRemoved.Invoke();
                StartCoroutine(StartWithDelay(other, item));
             }
         }

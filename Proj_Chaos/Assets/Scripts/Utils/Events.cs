@@ -30,4 +30,6 @@ public class Events
     [System.Serializable] public class EventRightItem : UnityEvent { }
     
     [System.Serializable] public class EventWrongItem : UnityEvent { }
+    [System.Serializable] public class EventItemRemoved : UnityEvent { }
+    
 }
