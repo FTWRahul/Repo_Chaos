@@ -336,7 +336,7 @@ MonoBehaviour:
   radius: 5
   timeBetweenSlaps: 5
   timeIncapacitated: 0
-  slapForce: 200
+  slapForce: 250
   canSlap: 1
 --- !u!114 &23942564
 MonoBehaviour:

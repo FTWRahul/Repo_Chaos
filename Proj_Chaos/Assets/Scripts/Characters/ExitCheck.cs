@@ -20,7 +20,12 @@ public class ExitCheck : MonoBehaviour
         {
             if (other.GetComponent<PickUp>().itemHold != null)
             {
-                other.GetComponent<PickUp>().DropItem();
+                
+               ItemId item =  other.GetComponent<PickUp>().itemHold;
+               int itemID = item.itemId;
+               ItemsDatabase.Instance.objectsInScene[itemID]--;
+               other.GetComponent<PickUp>().DropItem();
+               item.Vanish();
             }
         }
     }
