@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class QuestGenerator : MonoBehaviour
 {
-    private List<int> _itemsToCollect = new List<int>();
+    public List<int> itemsToCollect = new List<int>();
     public int maxItemAmount;
 
     private void Start()
@@ -14,7 +14,7 @@ public class QuestGenerator : MonoBehaviour
         for (int i = 0; i < maxItemAmount; i++)
         {
             int rand = Random.Range(0, ItemsDatabase.Instance.database.Count);
-            _itemsToCollect.Add(ItemsDatabase.Instance.database[rand].itemId);
+            itemsToCollect.Add(ItemsDatabase.Instance.database[rand].itemId);
         }
     }
 }
