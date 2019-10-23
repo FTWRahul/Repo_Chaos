@@ -24,11 +24,19 @@ public class AgentBehaviour : MonoBehaviour
     private void Awake()
     {
         _slapper = GetComponent<Slapper>();
-        _slapper.OnCharacterEndSlap.AddListener(CheckForItem);
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _questGenerator = GetComponent<QuestGenerator>();
         _pickUp = GetComponent<PickUp>();
-        
+    }
+
+    private void OnEnable()
+    {
+        _slapper.OnCharacterEndSlap.AddListener(CheckForItem);
+    }
+
+    private void OnDisable()
+    {
+        _slapper.OnCharacterEndSlap.RemoveListener(CheckForItem);
     }
 
     private void Start()

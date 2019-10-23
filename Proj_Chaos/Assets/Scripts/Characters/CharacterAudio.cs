@@ -4,17 +4,14 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class CharacterAudio : MonoBehaviour
 {
-
     [SerializeField] private AudioClip[] slapClip;
     [SerializeField] private AudioClip pickupClip;
     [SerializeField] private AudioClip dropClip;
-
     private AudioSource _audioSource;
 
-    private void Start()
+    private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
-        // subscribe to animation controller event
     }
 
     public void PlaySlap()
@@ -31,10 +28,10 @@ public class CharacterAudio : MonoBehaviour
         _audioSource.Play();
     }
 
-    public void PlayDrop()
+/*    public void PlayDrop()
     {
         _audioSource.Stop();
         _audioSource.clip = dropClip;
         _audioSource.Play();
-    }
+    }*/
 }

@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class CharacterAnimation : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
+    private Animator _animator;
     private PickUp _pickUp;
     private Slapper _slapper;
     private NavMeshAgent _navMeshAgent;
     private CharacterController _characterController;
+    private CharacterAudio _characterAudio;
     
     private static readonly int HorizontalF = Animator.StringToHash("Horizontal_f");
     private static readonly int VerticalF = Animator.StringToHash("Vertical_f");
@@ -22,19 +21,12 @@ public class CharacterAnimation : MonoBehaviour
     private static readonly int Slapped = Animator.StringToHash("Slapped");
     private static readonly int HasItem = Animator.StringToHash("HasItem");
 
-    public void Start()
+    public void Awake()
     {
-        animator = GetComponentInChildren<Animator>();
+        _animator = GetComponentInChildren<Animator>();
         _pickUp = GetComponent<PickUp>();
-
-        _pickUp.onCharacterPickup.AddListener(SetPickUpTrigger);
-        _pickUp.onHasItemChange.AddListener(SetItemBool);
-        
         _slapper = GetComponent<Slapper>();
-        
-        _slapper.OnCharacterSlap.AddListener(SetSlapTrigger);
-        _slapper.OnCharacterSlapped.AddListener(SetSlappedTrigger);
-        
+
         if (GetComponent<CharacterController>())
         {
             _characterController = GetComponent<CharacterController>();
@@ -47,8 +39,20 @@ public class CharacterAnimation : MonoBehaviour
     
     public void OnEnable()
     {
-        //_pickUp. set item bool && Set pick up trigger && set drop trigger
+        _pickUp.onCharacterPickup.AddListener(SetPickUpTrigger);
+        _pickUp.onHasItemChange.AddListener(SetItemBool);
         
+        _slapper.OnCharacterSlap.AddListener(SetSlapTrigger);
+        _slapper.OnCharacterSlapped.AddListener(SetSlappedTrigger);
+    }
+
+    public void OnDisable()
+    {
+        _pickUp.onCharacterPickup.RemoveListener(SetPickUpTrigger);
+        _pickUp.onHasItemChange.RemoveListener(SetItemBool);
+        
+        _slapper.OnCharacterSlap.RemoveListener(SetSlapTrigger);
+        _slapper.OnCharacterSlapped.RemoveListener(SetSlappedTrigger);
     }
 
     private void Update()
@@ -56,53 +60,50 @@ public class CharacterAnimation : MonoBehaviour
         UpdateAnimation();
     }
 
-    void UpdateAnimation()
+    private void UpdateAnimation()
     {
         if (_characterController)
         {
-            animator.SetFloat(HorizontalF, Input.GetAxisRaw("Horizontal"));
-            animator.SetFloat(VerticalF, Input.GetAxisRaw("Vertical"));
+            _animator.SetFloat(HorizontalF, Input.GetAxisRaw("Horizontal"));
+            _animator.SetFloat(VerticalF, Input.GetAxisRaw("Vertical"));
         }
         else
         {
             if (Math.Abs(_navMeshAgent.velocity.magnitude) > 0)
             {
-                animator.SetFloat(HorizontalF, 0);
-                animator.SetFloat(VerticalF, 1);
+                _animator.SetFloat(HorizontalF, 0);
+                _animator.SetFloat(VerticalF, 1);
             }
             else
             {
-                animator.SetFloat(HorizontalF, 0);
-                animator.SetFloat(VerticalF, 0);
+                _animator.SetFloat(HorizontalF, 0);
+                _animator.SetFloat(VerticalF, 0);
             }
                 
         }
     }
     
-    void SetDropTrigger()
-    {
-        animator.SetTrigger(Drop);
-    }
 
     void SetItemBool()
     {
-        animator.SetBool(HasItem, _pickUp.hasItem);
+        _animator.SetBool(HasItem, _pickUp.hasItem);
     }
     
     void SetPickUpTrigger()
     {
-        animator.SetTrigger(PickUp);
+        _animator.SetTrigger(PickUp);
     }
 
     void SetSlapTrigger()
     {
-        animator.SetFloat(Index,Random.Range(0,3));
-        animator.SetTrigger(Slap);
+        _animator.SetFloat(Index,Random.Range(0,3));
+        _animator.SetTrigger(Slap);
     }
 
     void SetSlappedTrigger()
     {
-        animator.SetTrigger(Slapped);
+        _animator.SetFloat(Index,Random.Range(0,1));
+        _animator.SetTrigger(Slapped);
     }
     
 }

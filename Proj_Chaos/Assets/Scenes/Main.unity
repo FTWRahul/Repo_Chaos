@@ -622,11 +622,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
-    - target: {fileID: 505952558114817993, guid: b2763f7a371730641985ae3bd947666d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 505952558114817999, guid: b2763f7a371730641985ae3bd947666d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -680,11 +675,6 @@ PrefabInstance:
     - target: {fileID: 505952558114817999, guid: b2763f7a371730641985ae3bd947666d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1363553524825332995, guid: b2763f7a371730641985ae3bd947666d,
-        type: 3}
-      propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
