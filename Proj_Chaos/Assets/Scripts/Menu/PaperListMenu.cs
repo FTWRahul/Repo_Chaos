@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -20,14 +21,25 @@ public class PaperListMenu : Singleton<PaperListMenu>
     
     private void Start()
     {
-        player = FindObjectOfType<PlayerMover>();
         _paperListMenuAnimator = GetComponent<Animation>();
-        GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChanged);
-        Init();
+
     }
     
+    private void OnEnable()
+    {
+        GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChanged);
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.OnGameStateChanged.RemoveListener(HandleGameStateChanged);
+    }
+
+    //call after all instan
     public void Init()
     {
+        player = FindObjectOfType<PlayerMover>();
+        
         QuestGenerator questGen = player.GetComponent<QuestGenerator>();
         foreach (int itemID in questGen.itemsToCollect)
         {
@@ -50,19 +62,7 @@ public class PaperListMenu : Singleton<PaperListMenu>
             MoveOut();
         }
     }
-    
-    
 
-/*    public void OnMoveOutComplete()
-    {
-        onMoveList.Invoke(false);
-    }
-
-    public void OnMoveInStart()
-    {
-        onMoveList.Invoke(true);
-    }*/
-    
     public void MoveIn()
     {
         //call move in on start
