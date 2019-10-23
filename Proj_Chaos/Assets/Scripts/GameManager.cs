@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,10 +7,12 @@ public class GameManager : Singleton<GameManager>
 {
     public enum GameState
     {
+        MENU,
         PREGAME,
         RUNNING,
         OPENLIST,
-        PAUSED
+        PAUSED,
+        END
     }
     
     public GameObject[] systemPrefabs; //List of the managers need to instantiate
@@ -67,6 +68,9 @@ public class GameManager : Singleton<GameManager>
 
         switch (currentGameState)
         {
+            case GameState.MENU:
+                break;
+                
             case GameState.PREGAME:
                 Time.timeScale = 1f;
                 break;
@@ -80,6 +84,10 @@ public class GameManager : Singleton<GameManager>
                 break;
             
             case GameState.PAUSED:
+                Time.timeScale = 0.0f;
+                break;
+            
+            case GameState.END:
                 Time.timeScale = 0.0f;
                 break;
             
