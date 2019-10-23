@@ -45,8 +45,16 @@ public class UIManager : Singleton<UIManager>
     {
         pauseMenu.gameObject.SetActive(currentState == GameManager.GameState.PAUSED);
         mainMenu.gameObject.SetActive(currentState == GameManager.GameState.MENU);
-        listMenu.gameObject.SetActive(currentState == GameManager.GameState.RUNNING);
         endMenu.gameObject.SetActive(currentState == GameManager.GameState.END);
+        
+        if (currentState == GameManager.GameState.OPENLIST || currentState == GameManager.GameState.RUNNING)
+        {
+            listMenu.gameObject.SetActive(true);
+        }
+        else
+        {
+            listMenu.gameObject.SetActive(false);
+        }
     }
 
     public void Init()
