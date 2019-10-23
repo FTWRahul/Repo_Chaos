@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainMenu : MonoBehaviour
+public class PreGameMenu : MonoBehaviour
 {
     public Events.EventFadeComplete onMainMenuFadeComplete;
     
@@ -14,7 +14,16 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         _mainMenuAnimator = GetComponent<Animation>();
+    }
+    
+    private void OnEnable()
+    {
         GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChanged);
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.OnGameStateChanged.RemoveListener(HandleGameStateChanged);
     }
     
     private void HandleGameStateChanged(GameManager.GameState currentState, GameManager.GameState previousState)

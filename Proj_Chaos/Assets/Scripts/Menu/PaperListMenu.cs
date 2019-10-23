@@ -28,6 +28,8 @@ public class PaperListMenu : MonoBehaviour
             MoveOut();
         }
     }
+    
+    
 
 /*    public void OnMoveOutComplete()
     {

@@ -31,6 +31,7 @@ public class GameManager : Singleton<GameManager>
     {
         DontDestroyOnLoad(gameObject);
         InstantiateSystemPrefabs();
+        UpdateState(GameState.MENU);
     }
     
     private void InstantiateSystemPrefabs()
@@ -60,8 +61,8 @@ public class GameManager : Singleton<GameManager>
             ToggleList();
         }
     }
-    
-    public void UpdateState(GameState state)
+
+    private void UpdateState(GameState state)
     {
         GameState previousGameState = currentGameState;
         currentGameState = state;
