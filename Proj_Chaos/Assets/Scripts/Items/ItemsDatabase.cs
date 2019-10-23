@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using Vector3 = System.Numerics.Vector3;
 
 public class ItemsDatabase : Singleton<ItemsDatabase>
 {
@@ -9,6 +11,7 @@ public class ItemsDatabase : Singleton<ItemsDatabase>
     public GameObject playerPrefab;
     public Transform spawnLocation;
     public GameObject NPCSpawnner;
+    public GameObject gate1, gate2;
 
     protected override void Awake()
     {
@@ -29,5 +32,18 @@ public class ItemsDatabase : Singleton<ItemsDatabase>
 
         Instantiate(playerPrefab, spawnLocation.position, Quaternion.identity);
         NPCSpawnner.SetActive(true);
+        StartCoroutine(LiftGates());
+    }
+
+    public IEnumerator LiftGates()
+    {
+        while (gate1.transform.position.y < 15)
+        {
+            float t = 0;
+            t += Time.deltaTime;
+            gate1.transform.position += UnityEngine.Vector3.up * Time.deltaTime;
+            gate2.transform.position += UnityEngine.Vector3.up * Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
     }
 }
