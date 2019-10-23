@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 187938768472175728}
   - component: {fileID: 187938768472175731}
-  - component: {fileID: 1138117022}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -55,11 +54,3 @@ MonoBehaviour:
     m_TypeName: Events+EventGameState, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   currentGameState: 1
---- !u!81 &1138117022
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187938768472175730}
-  m_Enabled: 1

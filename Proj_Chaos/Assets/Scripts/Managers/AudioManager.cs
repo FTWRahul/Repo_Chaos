@@ -93,9 +93,10 @@ public class AudioManager : Singleton<AudioManager>
             crowdSource.Stop();
             musicSource.Stop();
         }
-        else if (currentState == GameManager.GameState.MENU)
+        else if (currentState == GameManager.GameState.PREGAME)
         {
             crowdSource.Stop();
+            
             
             musicSource.Stop();
             musicSource.clip = menuClip;
