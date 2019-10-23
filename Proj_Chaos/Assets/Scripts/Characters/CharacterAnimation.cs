@@ -1,42 +1,82 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class CharacterAnimation : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     private PickUp _pickUp;
     private Slapper _slapper;
+    private NavMeshAgent _navMeshAgent;
+    private CharacterController _characterController;
     
-    private static readonly int Velocity = Animator.StringToHash("Velocity_i");
     private static readonly int HorizontalF = Animator.StringToHash("Horizontal_f");
     private static readonly int VerticalF = Animator.StringToHash("Vertical_f");
+    private static readonly int Index = Animator.StringToHash("Index");
     private static readonly int Drop = Animator.StringToHash("Drop");
     private static readonly int PickUp = Animator.StringToHash("PickUp");
     private static readonly int Slap = Animator.StringToHash("Slap");
     private static readonly int Slapped = Animator.StringToHash("Slapped");
     private static readonly int HasItem = Animator.StringToHash("HasItem");
 
-    public void Awake()
+    public void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         _pickUp = GetComponent<PickUp>();
+
+        _pickUp.onCharacterPickup.AddListener(SetPickUpTrigger);
+        _pickUp.onHasItemChange.AddListener(SetItemBool);
+        
         _slapper = GetComponent<Slapper>();
+        
+        _slapper.OnCharacterSlap.AddListener(SetSlapTrigger);
+        _slapper.OnCharacterSlapped.AddListener(SetSlappedTrigger);
+        
+        if (GetComponent<CharacterController>())
+        {
+            _characterController = GetComponent<CharacterController>();
+        }
+        else
+        {
+            _navMeshAgent = GetComponent<NavMeshAgent>();
+        }
     }
     
     public void OnEnable()
     {
-         //UpdateAnimation every frame
-         //_pickUp. set item bool && Set pick up trigger && set drop trigger
-         // slapper setSlapTrigger onSlapEvent && setSlappedTrigger onSlappedEvent 
+        //_pickUp. set item bool && Set pick up trigger && set drop trigger
+        
     }
-    
-    void UpdateAnimation(float magnitude, float x, float z)
+
+    private void Update()
     {
-        //update info every frame devend on charactercontroller or navmesh
-        animator.SetFloat(Velocity, (int)magnitude);
-        animator.SetFloat(HorizontalF, x);
-        animator.SetFloat(VerticalF, z);
+        UpdateAnimation();
+    }
+
+    void UpdateAnimation()
+    {
+        if (_characterController)
+        {
+            animator.SetFloat(HorizontalF, Input.GetAxisRaw("Horizontal"));
+            animator.SetFloat(VerticalF, Input.GetAxisRaw("Vertical"));
+        }
+        else
+        {
+            if (Math.Abs(_navMeshAgent.velocity.magnitude) > 0)
+            {
+                animator.SetFloat(HorizontalF, 0);
+                animator.SetFloat(VerticalF, 1);
+            }
+            else
+            {
+                animator.SetFloat(HorizontalF, 0);
+                animator.SetFloat(VerticalF, 0);
+            }
+                
+        }
     }
     
     void SetDropTrigger()
@@ -44,9 +84,9 @@ public class CharacterAnimation : MonoBehaviour
         animator.SetTrigger(Drop);
     }
 
-    void SetItemBool(bool hasItem)
+    void SetItemBool()
     {
-        animator.SetBool(HasItem, hasItem);
+        animator.SetBool(HasItem, _pickUp.hasItem);
     }
     
     void SetPickUpTrigger()
@@ -56,6 +96,7 @@ public class CharacterAnimation : MonoBehaviour
 
     void SetSlapTrigger()
     {
+        animator.SetFloat(Index,Random.Range(0,3));
         animator.SetTrigger(Slap);
     }
 

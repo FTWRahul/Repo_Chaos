@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(PickUp))]
 public class Slapper : MonoBehaviour
 {
+    public Events.EventCharacterSlap OnCharacterSlap;
     public Events.EventCharacterSlapped OnCharacterSlapped;
     public Events.EventCharacterAbleSlap OnCharacterEndSlap;
     
@@ -33,7 +34,9 @@ public class Slapper : MonoBehaviour
 
     private void Slap()
     {
-        //should be on anim
+        OnCharacterSlap.Invoke();
+        
+        //Coroutine doesnt work
         StartCoroutine(DidSlap());
         
         Collider[] overlappedObjects = Physics.OverlapSphere(transform.position, radius);
@@ -52,22 +55,18 @@ public class Slapper : MonoBehaviour
 
     private IEnumerator DidSlap()
     {
-        ChangeBoolStates(false);
+        ChangeBoolStates();
         
         yield return new WaitForSeconds(timeBetweenSlaps);
 
-        ChangeBoolStates(true);
+        ChangeBoolStates();
     }
 
-    public void ChangeSlapBool(bool canSlap)
-    {
-        this.canSlap = canSlap;
-    }
     
     private IEnumerator Slapped(Vector3 dir)
     {
-        ChangeBoolStates(false);
         OnCharacterSlapped.Invoke();
+        ChangeBoolStates();
         
         //Physics
         _rb.isKinematic = false;
@@ -83,13 +82,18 @@ public class Slapper : MonoBehaviour
             _rb.isKinematic = true;
         }
         
-        ChangeBoolStates(true);
+        ChangeBoolStates();
     }
 
-    private void ChangeBoolStates(bool canDo)
+    private void ChangeBoolStates()
     {
-        ChangeSlapBool(canDo);
-        _pickUp.ChangePickupBool(canDo);
+        ChangeSlapBool(!canSlap);
+        _pickUp.ChangePickupBool(!canSlap);
+    }
+
+    public void ChangeSlapBool(bool canDoAction)
+    {
+        canSlap = canDoAction;
     }
 
     private void OnDestroy()

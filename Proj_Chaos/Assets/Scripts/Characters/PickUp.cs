@@ -7,6 +7,8 @@ public class PickUp : MonoBehaviour
     public bool canDoAction = true;
     public bool hasItem = false;
 
+    public Events.EventCharacterPickup onCharacterPickup;
+    public Events.EventCharacterHasItemChange onHasItemChange;
     // event on OnpickupItem
     // event onHasItemChange(bool)
     // event on onDropItem
@@ -40,8 +42,10 @@ public class PickUp : MonoBehaviour
         }
     }
 
-    public void PickUpItem()
+    private void PickUpItem()
     {
+        onCharacterPickup.Invoke();
+        
         ChangePickupBool(false);
         _slapper.ChangeSlapBool(false);
         //trigger pick up anim
@@ -50,6 +54,7 @@ public class PickUp : MonoBehaviour
         itemHold = _itemToPickUp.GetComponent<ItemId>();
         itemHold.transform.SetParent(root);
         itemHold.transform.localPosition = Vector3.zero;
+        itemHold.transform.rotation = Quaternion.identity;
         itemHold.GetComponent<Rigidbody>().isKinematic = true;
         
         itemHold.isAvailable = false;
@@ -58,7 +63,7 @@ public class PickUp : MonoBehaviour
         ChangePickupBool(true);
     }
 
-    public void DropItem()
+    private void DropItem()
     {
         //additional check for dropping item after slap//
         if (!hasItem) return;
@@ -100,6 +105,7 @@ public class PickUp : MonoBehaviour
 
     public void ChangePickupBool(bool canDo)
     {
+        onHasItemChange.Invoke();
         canDoAction = canDo;
     }
 }
