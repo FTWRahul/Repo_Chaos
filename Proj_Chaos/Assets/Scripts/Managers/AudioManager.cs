@@ -21,7 +21,7 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] public AudioClip menuClip;
     [SerializeField] public AudioClip elevatorDefaultClip;
     [SerializeField] public AudioClip elevatorInGameClip;
-    [SerializeField] public List<AudioClip> crowdClips = new List<AudioClip>();
+    [SerializeField] public AudioClip[] crowdClips;
     [SerializeField] public AudioClip moneyClip;
     [SerializeField] public AudioClip wrongItemClip;
     [SerializeField] public AudioClip failGameClip;

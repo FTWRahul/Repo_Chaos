@@ -442,10 +442,13 @@ MonoBehaviour:
   menuClip: {fileID: 8300000, guid: 8445b1ab210a15745bb4e427f8d13430, type: 3}
   elevatorDefaultClip: {fileID: 8300000, guid: 9b40ab4ce3382c34bba60782a23d7488, type: 3}
   elevatorInGameClip: {fileID: 8300000, guid: 453d44dfe081e164483e2c9b0ce26042, type: 3}
-  crowdClip: {fileID: 0}
+  crowdClips:
+  - {fileID: 8300000, guid: 6ef275a36a793b649beb1396102921c6, type: 3}
+  - {fileID: 8300000, guid: a15fefbfcde7f7c49b76228f6746cc93, type: 3}
+  - {fileID: 8300000, guid: c3132972f726f5c48afde0cd1af69bd4, type: 3}
   moneyClip: {fileID: 8300000, guid: 134508a1f1ccbab4da8d6388ad197fa1, type: 3}
   wrongItemClip: {fileID: 8300000, guid: edbd1c658adb5bc4181b49165ec735fd, type: 3}
   failGameClip: {fileID: 8300000, guid: 73c4971639a1b33479975e7d5bc11e5e, type: 3}
   winGameClip: {fileID: 8300000, guid: 7b3746b161354864faeca8afffeb2798, type: 3}
   doorClip: {fileID: 8300000, guid: c84651388897c824bba4f24e3489f5cd, type: 3}
-  paperClip: {fileID: 0}
+  paperClip: {fileID: 8300000, guid: 718acf53f504c7543941c5d681f4e6c7, type: 3}

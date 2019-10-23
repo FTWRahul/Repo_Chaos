@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterAudio : MonoBehaviour
 {
 
-    [SerializeField] private List<AudioClip> slapClip = new List<AudioClip>();
+    [SerializeField] private AudioClip[] slapClip;
     [SerializeField] private AudioClip pickupClip;
     [SerializeField] private AudioClip dropClip;
 
@@ -20,7 +20,7 @@ public class CharacterAudio : MonoBehaviour
     public void PlaySlap()
     {
         _audioSource.Stop();
-        _audioSource.clip = slapClip[Random.Range(0, slapClip.Count)];
+        _audioSource.clip = slapClip[Random.Range(0, slapClip.Length)];
         _audioSource.Play();
     }
 
