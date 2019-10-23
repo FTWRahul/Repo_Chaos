@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 1037741232}
   - component: {fileID: 23942564}
   - component: {fileID: 352369329}
+  - component: {fileID: 2021273822}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -226,6 +227,9 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Events+EventLMBPressed, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  possibleSections: []
+  exit: {fileID: 0}
+  probability: 0.5
 --- !u!114 &1037741227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,3 +346,17 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2021273822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505952558114817993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc2da5741de7364388bff3b1901cc4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsToCollect: 
+  maxItemAmount: 1
