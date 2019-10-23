@@ -439,13 +439,13 @@ MonoBehaviour:
   crowdSource: {fileID: 6121752884111798836}
   musicSource: {fileID: 6121752883991509497}
   eventEffectsSource: {fileID: 6121752883825708676}
-  menuClip: {fileID: 0}
+  menuClip: {fileID: 8300000, guid: 8445b1ab210a15745bb4e427f8d13430, type: 3}
   elevatorDefaultClip: {fileID: 8300000, guid: 9b40ab4ce3382c34bba60782a23d7488, type: 3}
   elevatorInGameClip: {fileID: 8300000, guid: 453d44dfe081e164483e2c9b0ce26042, type: 3}
   crowdClip: {fileID: 0}
   moneyClip: {fileID: 8300000, guid: 134508a1f1ccbab4da8d6388ad197fa1, type: 3}
   wrongItemClip: {fileID: 8300000, guid: edbd1c658adb5bc4181b49165ec735fd, type: 3}
   failGameClip: {fileID: 8300000, guid: 73c4971639a1b33479975e7d5bc11e5e, type: 3}
-  winGameClip: {fileID: 0}
+  winGameClip: {fileID: 8300000, guid: 7b3746b161354864faeca8afffeb2798, type: 3}
   doorClip: {fileID: 8300000, guid: c84651388897c824bba4f24e3489f5cd, type: 3}
   paperClip: {fileID: 0}
