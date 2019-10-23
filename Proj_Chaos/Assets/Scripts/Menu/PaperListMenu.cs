@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PaperListMenu : MonoBehaviour
 {
@@ -10,11 +11,28 @@ public class PaperListMenu : MonoBehaviour
     [SerializeField] private AnimationClip moveInAnimationClip;
     [SerializeField] private AnimationClip moveOutAnimationClip;
 
+    private PlayerMover player;
+    public GameObject textPrefab;
+    public Transform spawnPosition;
+    
     private void Start()
     {
+        player = FindObjectOfType<PlayerMover>();
         _paperListMenuAnimator = GetComponent<Animation>();
         GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChanged);
+        Init();
     }
+    
+    public void Init()
+    {
+        QuestGenerator questGen = player.GetComponent<QuestGenerator>();
+        foreach (int itemID in questGen.itemsToCollect)
+        {
+            Text nameText = Instantiate(textPrefab, spawnPosition.transform).GetComponent<Text>();
+            nameText.text = ItemsDatabase.Instance.database[itemID].itemName;
+        }
+    }
+
     
     private void HandleGameStateChanged(GameManager.GameState currentState, GameManager.GameState previousState)
     {
