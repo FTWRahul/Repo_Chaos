@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 3
   itemName: Phone
-  itemPrefab: {fileID: 4153414680352874865, guid: 9288f3b0e9816c34a9c3bac659539708,
+  itemPrefab: {fileID: 959085404832457197, guid: a44c4f19c4a70b140b121e4095ea3b9b,
     type: 3}
   typeSize: 0

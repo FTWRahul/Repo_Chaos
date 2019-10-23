@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1545734216671483185}
   - component: {fileID: 4943338369389761067}
   - component: {fileID: 2833110917280865520}
+  - component: {fileID: 8496268171249126775}
   m_Layer: 0
   m_Name: Box_Small
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 959085404832457197}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.1701264, y: 0.5, z: -16.383448}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -109,3 +110,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.39999998, z: 0.099999994}
   m_Center: {x: 0, y: 0.19999999, z: 0}
+--- !u!114 &8496268171249126775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959085404832457197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57674304148e33c44b178d9dc7539f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 0
+  isAvailable: 1

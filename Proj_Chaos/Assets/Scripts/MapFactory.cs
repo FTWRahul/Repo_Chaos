@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapFactory : MonoBehaviour
+public class MapFactory : Singleton<MapFactory>
 {
     public List<Transform> spawnPositions;
     public List<GameObject> sectionPrefab;
+    public static List<Section> spawnnedSections = new List<Section>();
 
     [ContextMenu("GenerateMap")]
     public void SpawnShelves()
@@ -16,10 +17,11 @@ public class MapFactory : MonoBehaviour
             Vector3 rotation = Vector3.zero;
             rotation.y = randRot * 90;
             int rand = Random.Range(0, sectionPrefab.Count);
-            GameObject tempGo = Instantiate(sectionPrefab[rand], spawnPositions[i].position, Quaternion.Euler(rotation), transform);
-            if (tempGo.GetComponent<Section>() != null)
+            Section tempGo = Instantiate(sectionPrefab[rand], spawnPositions[i].position, Quaternion.Euler(rotation), transform).GetComponent<Section>();
+            if (tempGo != null)
             {
-                tempGo.GetComponent<Section>().Inti();
+                tempGo.Inti();
+                spawnnedSections.Add(tempGo);
             }
         }
     }

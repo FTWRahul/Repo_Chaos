@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 7
   itemName: Microwave
-  itemPrefab: {fileID: 4153414680352874865, guid: 9288f3b0e9816c34a9c3bac659539708,
+  itemPrefab: {fileID: 4232020331458428953, guid: f49d0070ca0b6ee428bd5cb69867060e,
     type: 3}
-  typeSize: 0
+  typeSize: 1

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 0
   itemName: TV
-  itemPrefab: {fileID: 4153414680352874865, guid: 9288f3b0e9816c34a9c3bac659539708,
+  itemPrefab: {fileID: 8278838316432989588, guid: 273a986b993ae284bbc9f7063343f9f4,
     type: 3}
-  typeSize: 0
+  typeSize: 2

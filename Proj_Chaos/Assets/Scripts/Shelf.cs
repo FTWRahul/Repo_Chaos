@@ -29,7 +29,8 @@ public class Shelf : MonoBehaviour
     {
         for (int i = 0; i < positions.Count; i++)
         {
-            ItemId tempGo = Instantiate(item.itemPrefab, positions[i].position, Quaternion.identity).GetComponent<ItemId>();
+            ItemId tempGo = Instantiate(item.itemPrefab, positions[i].position, transform.rotation).GetComponent<ItemId>();
+            tempGo.transform.parent = this.transform;
             tempGo.Init(item.itemId);
         }
     }

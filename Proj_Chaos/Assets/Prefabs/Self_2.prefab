@@ -786,6 +786,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7883949430191252586}
+  - component: {fileID: 3608910322578160930}
   m_Layer: 0
   m_Name: Self_2
   m_TagString: Untagged
@@ -810,6 +811,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3608910322578160930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6571371863621473913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5886e8a93d3ea458c56a75cffbf939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smallItemPosition:
+  - {fileID: 1514951804102916128}
+  - {fileID: 5413735615294954854}
+  - {fileID: 5004602283821847098}
+  - {fileID: 3728497449246652226}
+  - {fileID: 1816515917604730529}
+  - {fileID: 4843320298358891691}
+  - {fileID: 3999319413437724300}
+  - {fileID: 294304637435503603}
+  - {fileID: 2025846719187478453}
+  - {fileID: 9006718493145680109}
+  - {fileID: 7968175051561019935}
+  - {fileID: 6454609588201553586}
+  - {fileID: 3043901192691259270}
+  - {fileID: 8603391672171374372}
+  - {fileID: 2559129509286595756}
+  - {fileID: 5094946064574003270}
+  - {fileID: 3885909308073010078}
+  - {fileID: 6000537830861114677}
+  - {fileID: 7990078357976628075}
+  - {fileID: 6703368170830106553}
+  - {fileID: 7125396689295215354}
+  - {fileID: 4404368842077491227}
+  - {fileID: 8071287262681469466}
+  - {fileID: 2405278971650623210}
+  mediumItemPosition:
+  - {fileID: 6770896506937217114}
+  - {fileID: 5904460307951513706}
+  - {fileID: 8668565814501192999}
+  - {fileID: 3107272604897482466}
+  - {fileID: 7281318769915938184}
+  - {fileID: 7342483408413321798}
+  largeItemPosition: []
 --- !u!1 &7286094694781812518
 GameObject:
   m_ObjectHideFlags: 0
