@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapFactory : Singleton<MapFactory>
+public class MapFactory : MonoBehaviour
 {
     public List<Transform> spawnPositions;
     public List<GameObject> sectionPrefab;
