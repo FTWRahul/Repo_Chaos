@@ -30,6 +30,7 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] public AudioClip paperClip;
 
     private CharacterController _characterController;
+
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -43,12 +44,12 @@ public class AudioManager : Singleton<AudioManager>
         _characterController.GetComponent<ExitCheck>().OnRightItem.AddListener(RightItem);
         _characterController.GetComponent<ExitCheck>().OnWrongItem.AddListener(WrongItem);
     }
-    
+
     private void OnEnable()
     {
         GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChanged);
-        
     }
+
     private void OnDisable()
     {
         GameManager.Instance.OnGameStateChanged.RemoveListener(HandleGameStateChanged);
@@ -68,24 +69,23 @@ public class AudioManager : Singleton<AudioManager>
     {
         PlayEvent(EventType.WRONG);
     }
-    
-    
+
+
     private void HandleGameStateChanged(GameManager.GameState previousState, GameManager.GameState currentState)
     {
+        Debug.Log(previousState + " " + currentState);
         if (currentState == GameManager.GameState.RUNNING)
         {
             crowdSource.Play();
 
             musicSource.Stop();
-            musicSource.clip = elevatorInGameClip;
+            if( musicSource.clip != elevatorInGameClip)
+                musicSource.clip = elevatorInGameClip;
             musicSource.Play();
         }
         else if (currentState == GameManager.GameState.PAUSED)
         {
             crowdSource.Stop();
-            
-            musicSource.Stop();
-            musicSource.clip = elevatorDefaultClip;
             musicSource.Play();
         }
         else if (currentState == GameManager.GameState.END)
@@ -96,7 +96,6 @@ public class AudioManager : Singleton<AudioManager>
         else if (currentState == GameManager.GameState.PREGAME)
         {
             crowdSource.Stop();
-            
             
             musicSource.Stop();
             musicSource.clip = menuClip;
