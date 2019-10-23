@@ -13,6 +13,12 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private MainMenu mainMenu;
     [SerializeField] private Camera dummyCamera;
 
+
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     private void OnEnable()
     {
         GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChanged);
@@ -39,11 +45,6 @@ public class UIManager : Singleton<UIManager>
         pauseMenu.gameObject.SetActive(currentState == GameManager.GameState.PAUSED);
         mainMenu.gameObject.SetActive(currentState == GameManager.GameState.MENU);
         listMenu.gameObject.SetActive(currentState == GameManager.GameState.RUNNING);
-
-        /*if (currentState != GameManager.GameState.PREGAME || currentState != GameManager.GameState.RUNNING)
-        {
-            preGameMenu.gameObject.SetActive(currentState == GameManager.GameState.PREGAME);
-        }*/
     }
     
 

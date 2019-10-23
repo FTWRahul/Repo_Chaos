@@ -15,7 +15,8 @@ public class GameManager : Singleton<GameManager>
         END
     }
 
-    public string levelName;
+    public string mainLevelName;
+    public string mainMenuName;
     public GameObject[] systemPrefabs; //List of the managers need to instantiate
     public Events.EventGameState OnGameStateChanged; //Event on change game state
     public GameState CurrentGameState 
@@ -146,7 +147,8 @@ public class GameManager : Singleton<GameManager>
     
     public void StartGame()
     {
-        LoadLevel(levelName);
+        SceneManager.UnloadSceneAsync(mainMenuName);
+        LoadLevel(mainLevelName);
     }
     
     public void TogglePause()

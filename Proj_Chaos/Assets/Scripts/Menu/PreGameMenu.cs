@@ -31,8 +31,7 @@ public class PreGameMenu : MonoBehaviour
     
     public void OnFadeInComplete()
     {
-        UIManager.Instance.SetDummyCameraActive(true);
-        
+        /*UIManager.Instance.SetDummyCameraActive(true);*/
         text.SetActive(false);
         LoadLevel();
         FadeOut();
@@ -47,8 +46,7 @@ public class PreGameMenu : MonoBehaviour
     
     public void FadeOut()
     {
-        UIManager.Instance.SetDummyCameraActive(false);
-        
+        /*UIManager.Instance.SetDummyCameraActive(false);*/
         _mainMenuAnimator.Stop();
         _mainMenuAnimator.clip = fadeOutAnimationClip;
         _mainMenuAnimator.Play();
@@ -57,6 +55,6 @@ public class PreGameMenu : MonoBehaviour
     public void LoadLevel()
     {
         GameManager.Instance.StartGame();
-        
+        GameManager.Instance.UpdateState(GameManager.GameState.RUNNING);
     }
 }

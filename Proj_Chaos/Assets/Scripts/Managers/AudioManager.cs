@@ -32,16 +32,22 @@ public class AudioManager : Singleton<AudioManager>
     private CharacterController _characterController;
     private void Start()
     {
-        _characterController = FindObjectOfType<CharacterController>();
+        DontDestroyOnLoad(gameObject);
         crowdSource.clip = crowdClips[0];
         musicSource.clip = menuClip;
+    }
+
+    public void InitPlayer()
+    {
+        _characterController = FindObjectOfType<CharacterController>();
+        _characterController.GetComponent<ExitCheck>().OnRightItem.AddListener(RightItem);
+        _characterController.GetComponent<ExitCheck>().OnWrongItem.AddListener(WrongItem);
     }
     
     private void OnEnable()
     {
         GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChanged);
-        _characterController.GetComponent<ExitCheck>().OnRightItem.AddListener(RightItem);
-        _characterController.GetComponent<ExitCheck>().OnWrongItem.AddListener(WrongItem);
+        
     }
     private void OnDisable()
     {
