@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PaperListMenu : MonoBehaviour
+public class PaperListMenu : Singleton<PaperListMenu>
 {
     public Events.EventMoveList onMoveList;
 
@@ -14,6 +15,8 @@ public class PaperListMenu : MonoBehaviour
     private PlayerMover player;
     public GameObject textPrefab;
     public Transform spawnPosition;
+
+    public List<TextMeshProUGUI> TextOrderedList;
     
     private void Start()
     {
@@ -26,10 +29,12 @@ public class PaperListMenu : MonoBehaviour
     public void Init()
     {
         QuestGenerator questGen = player.GetComponent<QuestGenerator>();
+        Debug.Log(questGen.itemsToCollect.Count);
         foreach (int itemID in questGen.itemsToCollect)
         {
-            Text nameText = Instantiate(textPrefab, spawnPosition.transform).GetComponent<Text>();
+            TextMeshProUGUI nameText = Instantiate(textPrefab, spawnPosition.transform).GetComponent<TextMeshProUGUI>();
             nameText.text = ItemsDatabase.Instance.database[itemID].itemName;
+            TextOrderedList.Add(nameText);
         }
     }
 
