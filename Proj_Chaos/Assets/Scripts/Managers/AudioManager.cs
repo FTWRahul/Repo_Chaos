@@ -1,4 +1,5 @@
 ﻿using System;
+using Boo.Lang;
 using UnityEngine;
 
 public enum EventType
@@ -20,7 +21,7 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] public AudioClip menuClip;
     [SerializeField] public AudioClip elevatorDefaultClip;
     [SerializeField] public AudioClip elevatorInGameClip;
-    [SerializeField] public AudioClip crowdClip;
+    [SerializeField] public List<AudioClip> crowdClips = new List<AudioClip>();
     [SerializeField] public AudioClip moneyClip;
     [SerializeField] public AudioClip wrongItemClip;
     [SerializeField] public AudioClip failGameClip;
@@ -31,7 +32,7 @@ public class AudioManager : Singleton<AudioManager>
     private void Start()
     {
         GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChanged);
-        crowdSource.clip = crowdClip;
+        crowdSource.clip = crowdClips[0];
         musicSource.clip = menuClip;
     }
 
