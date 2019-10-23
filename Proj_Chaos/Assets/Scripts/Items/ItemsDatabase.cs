@@ -29,5 +29,6 @@ public class ItemsDatabase : Singleton<ItemsDatabase>
 
         Instantiate(playerPrefab, spawnLocation.position, Quaternion.identity);
         NPCSpawnner.SetActive(true);
+        UIManager.Instance.Init();
     }
 }
