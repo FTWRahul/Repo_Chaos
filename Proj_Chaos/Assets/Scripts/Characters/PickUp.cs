@@ -6,6 +6,11 @@ public class PickUp : MonoBehaviour
 {
     public bool canDoAction = true;
     public bool hasItem = false;
+
+    // event on OnpickupItem
+    // event onHasItemChange(bool)
+    // event on onDropItem
+
     
     [SerializeField] private Transform root;
     private GameObject _itemToPickUp;
