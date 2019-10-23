@@ -21,16 +21,21 @@ public class AgentBehaviour : MonoBehaviour
     private PickUp _pickUp;
     private Slapper _slapper;
 
-    private void Start()
+    private void Awake()
     {
         _slapper = GetComponent<Slapper>();
         _slapper.OnCharacterEndSlap.AddListener(CheckForItem);
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _questGenerator = GetComponent<QuestGenerator>();
         _pickUp = GetComponent<PickUp>();
-        _itemToCollect = _questGenerator.itemsToCollect[0];
         
-        InitSections();
+    }
+
+    private void Start()
+    {
+        _itemToCollect = _questGenerator.itemsToCollect[0];
+        exit = GameObject.FindGameObjectWithTag("Exit").transform;
+        InitSections();    
     }
 
     void InitSections()
@@ -44,6 +49,10 @@ public class AgentBehaviour : MonoBehaviour
                 possibleSections.Add(section.transform);
             }
         }
+        Debug.Log(possibleSections.Count);
+        
+        ChooseNewSection();
+        UpdateDestination();
     }
 
     void ChooseNewSection()
@@ -52,17 +61,23 @@ public class AgentBehaviour : MonoBehaviour
         {
             int random = Random.Range(0, possibleSections.Count);
             _dest = possibleSections[random].position;
+            //Debug.Log(possibleSections[random].position);
             possibleSections.RemoveAt(random);
+        }
+        else if(exit != null)
+        {
+            _dest = exit.position;
         }
         else
         {
+            exit = GameObject.FindGameObjectWithTag("Exit").transform;
             _dest = exit.position;
         }
     }
 
     private void Update()
     {
-        if (_navMeshAgent.pathStatus == NavMeshPathStatus.PathComplete)
+        if (IsAtDestination())
         {
             CheckForItem();
         }
@@ -83,6 +98,7 @@ public class AgentBehaviour : MonoBehaviour
 
     private IEnumerator WaitForAction()
     {
+        Debug.Log(_pickUp);
         yield return new WaitUntil(() => _pickUp.canDoAction == true);
 
         CheckForItem();
@@ -91,31 +107,46 @@ public class AgentBehaviour : MonoBehaviour
     private void CheckForItem()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, 5);
-
+        bool itemFound = false;
         foreach (Collider collider in colliders)
         {
-            if (collider.GetComponent<ItemId>() && collider.GetComponent<ItemId>().itemId == _itemToCollect)
+            Debug.Log("Looking for Item");
+            if (collider.GetComponent<ItemId>() != null  && collider.GetComponent<ItemId>().itemId == _itemToCollect)
             {
+                itemFound = true;
+                Debug.Log("Found Item");
+
                 OnEPressed.Invoke();
 
                 _dest = _pickUp.hasItem ? exit.position : collider.transform.position;
+                UpdateDestination();
                 break;
             }
-            else
+            /*else
             {
-                if (_navMeshAgent.pathStatus == NavMeshPathStatus.PathComplete)
+                if (IsAtDestination())
                 {
                     ChooseNewSection();
+                    UpdateDestination();
+                    break;
                 }
-                break;
-            }
-            
-            UpdateDestination();
+            }*/
         }
+        if (!itemFound)
+        {
+            ChooseNewSection();
+            //UpdateDestination();
+        }
+        UpdateDestination();
     }
     
     void UpdateDestination()
     {
         _navMeshAgent.SetDestination(_dest);
+    }
+
+    bool IsAtDestination()
+    {
+        return Vector3.Distance (_dest, transform.position) < 2.0f;
     }
 }

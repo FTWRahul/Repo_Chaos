@@ -787,6 +787,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7883949430191252586}
   - component: {fileID: 3608910322578160930}
+  - component: {fileID: 3575423948037199885}
   m_Layer: 0
   m_Name: Self_2
   m_TagString: Untagged
@@ -856,6 +857,22 @@ MonoBehaviour:
   - {fileID: 7281318769915938184}
   - {fileID: 7342483408413321798}
   largeItemPosition: []
+--- !u!208 &3575423948037199885
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6571371863621473913}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.65, y: 0.5, z: 0.3}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.4, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7286094694781812518
 GameObject:
   m_ObjectHideFlags: 0

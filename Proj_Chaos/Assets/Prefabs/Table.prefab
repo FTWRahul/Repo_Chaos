@@ -968,6 +968,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5585803166347098517}
   - component: {fileID: 2593350994262146709}
+  - component: {fileID: 1517421345353833298}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -1005,10 +1006,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e5886e8a93d3ea458c56a75cffbf939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smallItemPosition: []
-  mediumItemPosition: []
+  smallItemPosition:
+  - {fileID: 460814504945486082}
+  - {fileID: 6395588359028146667}
+  - {fileID: 3889680980236071331}
+  - {fileID: 713627364792058026}
+  - {fileID: 9041172645091577305}
+  - {fileID: 1104519511680777216}
+  - {fileID: 2852040268512356829}
+  - {fileID: 8818552416559866697}
+  - {fileID: 2799813735732444144}
+  - {fileID: 8348653677373282136}
+  - {fileID: 5539360172197903374}
+  - {fileID: 2326225344835601594}
+  - {fileID: 8019669541756583529}
+  - {fileID: 6406323854608995625}
+  - {fileID: 7700450457750224704}
+  mediumItemPosition:
+  - {fileID: 2487747995557804680}
+  - {fileID: 8332708193511886379}
+  - {fileID: 1055249180720252479}
+  - {fileID: 3020147483005081365}
+  - {fileID: 2692131465586857341}
+  - {fileID: 3446710414815504801}
   largeItemPosition:
   - {fileID: 7792700221059162288}
   - {fileID: 131067274146405622}
   - {fileID: 2594105742646784406}
   - {fileID: 5117146801707615679}
+--- !u!208 &1517421345353833298
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8926024211328666502}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.5, y: 0.5, z: 0.6}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.4, z: 0}
+  m_TimeToStationary: 0.5

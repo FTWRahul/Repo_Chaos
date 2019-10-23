@@ -1,12 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class MapFactory : MonoBehaviour
 {
     public List<Transform> spawnPositions;
     public List<GameObject> sectionPrefab;
     public static List<Section> spawnnedSections = new List<Section>();
+    public NavMeshSurface navMesh;
+
+    private void Awake()
+    {
+        navMesh = GetComponentInChildren<NavMeshSurface>();
+    }
 
     [ContextMenu("GenerateMap")]
     public void SpawnShelves()

@@ -16,7 +16,7 @@ public class Slapper : MonoBehaviour
     private Rigidbody _rb;
     private PickUp _pickUp;
 
-    private void Start()
+    private void Awake()
     {
         _pickUp = GetComponent<PickUp>();
         _rb = GetComponent<Rigidbody>();
@@ -44,6 +44,7 @@ public class Slapper : MonoBehaviour
             if (slapper != null && slapper != this)
             {
                 StartCoroutine(slapper.Slapped(col.transform.position - transform.position));
+                break;
             }
         }
     }
