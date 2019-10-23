@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827892a514864c24fa32fd6b4a158326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainLevelName: MainLevelScene
+  mainMenuName: MainMenuScene
   systemPrefabs:
   - {fileID: 1368435504543104, guid: f094f1093dc5208478ed1c2897daa9eb, type: 3}
   - {fileID: 6121752884214802411, guid: 7052cfe1a7b6a094aaf2ca27b4ab08b2, type: 3}
