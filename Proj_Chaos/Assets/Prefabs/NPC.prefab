@@ -357,7 +357,8 @@ MonoBehaviour:
   timeBetweenSlaps: 5
   timeIncapacitated: 0.5
   slapForce: 400
-  canSlap: 1
+  probabilityOfAbleToSlap: 0.3
+  canSlap: 0
 --- !u!114 &23942564
 MonoBehaviour:
   m_ObjectHideFlags: 0

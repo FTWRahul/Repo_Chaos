@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(PickUp))]
 public class Slapper : MonoBehaviour
@@ -13,8 +14,9 @@ public class Slapper : MonoBehaviour
     [SerializeField] private float timeBetweenSlaps;
     [SerializeField] private float timeIncapacitated;
     [SerializeField] private float slapForce;
+    [SerializeField] private float probabilityOfAbleToSlap;
     
-    [SerializeField] private bool canSlap = true;
+    [SerializeField] private bool canSlap;
     private Rigidbody _rb;
     private PickUp _pickUp;
 
@@ -22,6 +24,12 @@ public class Slapper : MonoBehaviour
     {
         _pickUp = GetComponent<PickUp>();
         _rb = GetComponent<Rigidbody>();
+        
+        if (Random.value < probabilityOfAbleToSlap)
+        {
+            canSlap = true;
+        }
+
     }
 
     public void OnSlapPressed()
