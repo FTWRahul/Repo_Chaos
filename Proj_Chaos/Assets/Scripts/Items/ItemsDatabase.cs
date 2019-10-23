@@ -6,6 +6,10 @@ public class ItemsDatabase : Singleton<ItemsDatabase>
     public Dictionary<int, Item> database = new Dictionary<int, Item>();
     public Dictionary<int, int> objectsInScene = new Dictionary<int, int>();
 
+    public GameObject playerPrefab;
+    public Transform spawnLocation;
+    public GameObject NPCSpawnner;
+
     protected override void Awake()
     {
         base.Awake();
@@ -22,5 +26,8 @@ public class ItemsDatabase : Singleton<ItemsDatabase>
             Item newItem = new Item(item);
             database.Add(newItem.itemId, newItem);
         }
+
+        Instantiate(playerPrefab, spawnLocation.position, Quaternion.identity);
+        NPCSpawnner.SetActive(true);
     }
 }
