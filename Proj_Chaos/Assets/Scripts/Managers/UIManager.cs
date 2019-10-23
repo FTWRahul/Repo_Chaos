@@ -12,24 +12,17 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private PaperListMenu listMenu;
     [SerializeField] private MainMenu mainMenu;
     [SerializeField] private Camera dummyCamera;
-    
-    private void Start()
-    {
-        
-    }
-
 
     private void OnEnable()
     {
-        preGameMenu.onMainMenuFadeComplete.AddListener(HandleMainMenuFadeComplete);
-        /*listMenu.onMoveList.AddListener(HandleListMoveChanged);*/
         GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChanged);
     }
-
-    private void HandleMainMenuFadeComplete(bool fadeOut)
+    
+    private void OnDisable()
     {
-        onMainMenuFadeComplete.Invoke(fadeOut);
+        GameManager.Instance.OnGameStateChanged.RemoveListener(HandleGameStateChanged);
     }
+
 
     private void Update()
     {
@@ -37,7 +30,7 @@ public class UIManager : Singleton<UIManager>
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameManager.Instance.StartGame();
+            GameManager.Instance.UpdateState(GameManager.GameState.RUNNING);
         }
     }
     
@@ -45,12 +38,14 @@ public class UIManager : Singleton<UIManager>
     {
         pauseMenu.gameObject.SetActive(currentState == GameManager.GameState.PAUSED);
         mainMenu.gameObject.SetActive(currentState == GameManager.GameState.MENU);
-    }
+        listMenu.gameObject.SetActive(currentState == GameManager.GameState.RUNNING);
 
-/*    private void HandleListMoveChanged(bool active)
-    {
-        listMenu.gameObject.SetActive(active);
-    }*/
+        /*if (currentState != GameManager.GameState.PREGAME || currentState != GameManager.GameState.RUNNING)
+        {
+            preGameMenu.gameObject.SetActive(currentState == GameManager.GameState.PREGAME);
+        }*/
+    }
+    
 
     public void SetDummyCameraActive(bool active)
     {
@@ -60,5 +55,10 @@ public class UIManager : Singleton<UIManager>
     public void Quit()
     {
         GameManager.Instance.QuitGame();
+    }
+
+    public void PreGame()
+    {
+        GameManager.Instance.UpdateState(GameManager.GameState.PREGAME);
     }
 }
