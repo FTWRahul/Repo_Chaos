@@ -33,6 +33,7 @@ public class ItemsDatabase : Singleton<ItemsDatabase>
         Instantiate(playerPrefab, spawnLocation.position, Quaternion.identity);
         NPCSpawnner.SetActive(true);
         StartCoroutine(LiftGates());
+        UIManager.Instance.Init();
     }
 
     public IEnumerator LiftGates()

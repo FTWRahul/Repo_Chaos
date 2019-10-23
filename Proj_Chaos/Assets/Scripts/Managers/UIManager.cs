@@ -48,6 +48,11 @@ public class UIManager : Singleton<UIManager>
         listMenu.gameObject.SetActive(currentState == GameManager.GameState.RUNNING);
         endMenu.gameObject.SetActive(currentState == GameManager.GameState.END);
     }
+
+    public void Init()
+    {
+        listMenu.Init();
+    }
     
 
     public void SetDummyCameraActive(bool active)
