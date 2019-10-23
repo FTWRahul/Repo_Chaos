@@ -49,7 +49,6 @@ public class AgentBehaviour : MonoBehaviour
                 possibleSections.Add(section.transform);
             }
         }
-        Debug.Log(possibleSections.Count);
         
         ChooseNewSection();
         UpdateDestination();
@@ -61,7 +60,6 @@ public class AgentBehaviour : MonoBehaviour
         {
             int random = Random.Range(0, possibleSections.Count);
             _dest = possibleSections[random].position;
-            //Debug.Log(possibleSections[random].position);
             possibleSections.RemoveAt(random);
         }
         else if(exit != null)
@@ -98,9 +96,8 @@ public class AgentBehaviour : MonoBehaviour
 
     private IEnumerator WaitForAction()
     {
-        Debug.Log(_pickUp);
         yield return new WaitUntil(() => _pickUp.canDoAction == true);
-
+        
         CheckForItem();
     }
 
@@ -110,11 +107,9 @@ public class AgentBehaviour : MonoBehaviour
         bool itemFound = false;
         foreach (Collider collider in colliders)
         {
-            Debug.Log("Looking for Item");
             if (collider.GetComponent<ItemId>() != null  && collider.GetComponent<ItemId>().itemId == _itemToCollect)
             {
                 itemFound = true;
-                Debug.Log("Found Item");
 
                 OnEPressed.Invoke();
 
@@ -122,15 +117,7 @@ public class AgentBehaviour : MonoBehaviour
                 UpdateDestination();
                 break;
             }
-            /*else
-            {
-                if (IsAtDestination())
-                {
-                    ChooseNewSection();
-                    UpdateDestination();
-                    break;
-                }
-            }*/
+           
         }
         if (!itemFound)
         {
@@ -142,7 +129,10 @@ public class AgentBehaviour : MonoBehaviour
     
     void UpdateDestination()
     {
-        _navMeshAgent.SetDestination(_dest);
+        if (_navMeshAgent.isOnNavMesh)
+        {
+            _navMeshAgent.SetDestination(_dest);
+        }
     }
 
     bool IsAtDestination()

@@ -18,8 +18,7 @@ public class NPCSpawner : MonoBehaviour
 
     private void Start()
     {
-        SpawnNPCS(20);
-        Invoke("SpawnNPCS", 2f);
+        SpawnNPCS(10);
         StartCoroutine(ConstantSpawn());
     }
 
@@ -27,7 +26,7 @@ public class NPCSpawner : MonoBehaviour
     {
         while (true)
         {
-            delay = Random.Range(0, 10);
+            delay = Random.Range(0, 2);
             int rand = Random.Range(0, spawnPosition.Count);
             yield return new WaitForSeconds(delay);
             if (currentNPCList.Count < maxNPCAmount)
