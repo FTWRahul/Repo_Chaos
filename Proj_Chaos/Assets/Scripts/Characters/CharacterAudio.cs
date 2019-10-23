@@ -27,11 +27,4 @@ public class CharacterAudio : MonoBehaviour
         _audioSource.clip = pickupClip;
         _audioSource.Play();
     }
-
-/*    public void PlayDrop()
-    {
-        _audioSource.Stop();
-        _audioSource.clip = dropClip;
-        _audioSource.Play();
-    }*/
 }
