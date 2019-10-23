@@ -14,7 +14,7 @@ public class Slapper : MonoBehaviour
     [SerializeField] private float timeIncapacitated;
     [SerializeField] private float slapForce;
     
-    [SerializeField] private bool canSlap = true;
+    [SerializeField] private bool canSlap = false;
     private Rigidbody _rb;
     private PickUp _pickUp;
 

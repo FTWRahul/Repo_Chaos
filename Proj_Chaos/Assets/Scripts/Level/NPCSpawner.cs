@@ -13,7 +13,7 @@ public class NPCSpawner : MonoBehaviour
     public int maxNPCS;
     public float radius;
 
-    public List<GameObject> spawnedNPCS = new List<GameObject>();
+    public static List<GameObject> spawnedNPCS = new List<GameObject>();
 
     private void Start()
     {

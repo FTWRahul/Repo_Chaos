@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 23942564}
   - component: {fileID: 2021273822}
   - component: {fileID: 4667982709043180572}
+  - component: {fileID: 5896412580385966027}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -335,7 +336,7 @@ MonoBehaviour:
   radius: 5
   timeBetweenSlaps: 5
   timeIncapacitated: 0
-  slapForce: 200
+  slapForce: 250
   canSlap: 1
 --- !u!114 &23942564
 MonoBehaviour:
@@ -389,6 +390,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aa01b1c53d69ff4aa41f1cd913bfab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5896412580385966027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505952558114817993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a81b6547b65ffc47b007b952cd9c9d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  models:
+  - {fileID: 1363553524832611391}
+  - {fileID: 1363553524832702983}
+  - {fileID: 1363553524832606525}
+  - {fileID: 1363553524832723805}
+  - {fileID: 1363553524832612667}
+  - {fileID: 1363553524832535967}
+  - {fileID: 1363553524832662175}
+  - {fileID: 1363553524832643757}
 --- !u!1 &1363553524832535243
 GameObject:
   m_ObjectHideFlags: 0
@@ -2043,7 +2065,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1363553524832881871
 Transform:
   m_ObjectHideFlags: 0

@@ -37,6 +37,7 @@ public class AgentBehaviour : MonoBehaviour
     private void OnDisable()
     {
         _slapper.OnCharacterEndSlap.RemoveListener(CheckForItem);
+        NPCSpawner.spawnedNPCS.Remove(this.gameObject);
     }
 
     private void Start()

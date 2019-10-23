@@ -69,7 +69,7 @@ public class PickUp : MonoBehaviour
         ChangePickupBool(true);
     }
 
-    private void DropItem()
+    public void DropItem()
     {
         //additional check for dropping item after slap//
         if (!hasItem) return;

@@ -18,7 +18,15 @@ public class ExitCheck : MonoBehaviour
         }
         else if (other.GetComponent<PlayerMover>())
         {
-            
+            if (other.GetComponent<PickUp>().itemHold != null)
+            {
+                
+               ItemId item =  other.GetComponent<PickUp>().itemHold;
+               int itemID = item.itemId;
+               ItemsDatabase.Instance.objectsInScene[itemID]--;
+               other.GetComponent<PickUp>().DropItem();
+               item.Vanish();
+            }
         }
     }
 }
