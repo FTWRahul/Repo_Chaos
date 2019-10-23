@@ -2933,6 +2933,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 1028824299}
   listMenu: {fileID: 2779406738020469036}
   mainMenu: {fileID: 6344295028415314452}
+  endMenu: {fileID: 0}
   dummyCamera: {fileID: 20757272912230474}
 --- !u!1 &1495308988550548
 GameObject:
@@ -3804,6 +3805,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartButton: {fileID: 7031296869798175063}
   quitButton: {fileID: 4743345497687010871}
+  text: {fileID: 4384773918174290411}
 --- !u!1 &2998204995710374568
 GameObject:
   m_ObjectHideFlags: 0
