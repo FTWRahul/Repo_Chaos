@@ -14,7 +14,8 @@ public class GameManager : Singleton<GameManager>
         PAUSED,
         END
     }
-    
+
+    public string levelName;
     public GameObject[] systemPrefabs; //List of the managers need to instantiate
     public Events.EventGameState OnGameStateChanged; //Event on change game state
     public GameState CurrentGameState 
@@ -62,7 +63,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    private void UpdateState(GameState state)
+    public void UpdateState(GameState state)
     {
         GameState previousGameState = currentGameState;
         currentGameState = state;
@@ -70,10 +71,11 @@ public class GameManager : Singleton<GameManager>
         switch (currentGameState)
         {
             case GameState.MENU:
+                Time.timeScale = 1f;
                 break;
                 
             case GameState.PREGAME:
-                Time.timeScale = 1f;
+                Time.timeScale = 0f;
                 break;
             
             case GameState.RUNNING:
@@ -144,7 +146,7 @@ public class GameManager : Singleton<GameManager>
     
     public void StartGame()
     {
-        LoadLevel("Main");
+        LoadLevel(levelName);
     }
     
     public void TogglePause()

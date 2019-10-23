@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class PreGameMenu : MonoBehaviour
 {
-    public Events.EventFadeComplete onMainMenuFadeComplete;
-    
-    private Animation _mainMenuAnimator;
+
+    [SerializeField] private Animation _mainMenuAnimator;
     [SerializeField] private AnimationClip fadeInAnimationClip;
     [SerializeField] private AnimationClip fadeOutAnimationClip;
 
-    
-    private void Start()
-    {
-        _mainMenuAnimator = GetComponent<Animation>();
-    }
+    [SerializeField] private GameObject text;
     
     private void OnEnable()
     {
@@ -30,24 +25,17 @@ public class PreGameMenu : MonoBehaviour
     {
         if (previousState == GameManager.GameState.PREGAME && currentState == GameManager.GameState.RUNNING)
         {
-            FadeOut();
-        }
-
-        if (previousState != GameManager.GameState.PREGAME && currentState == GameManager.GameState.PREGAME)
-        {
             FadeIn();
         }
     }
     
-    public void OnFadeOutComplete()
-    {
-        onMainMenuFadeComplete.Invoke(true);
-    }
-
     public void OnFadeInComplete()
     {
-        onMainMenuFadeComplete.Invoke(false);
         UIManager.Instance.SetDummyCameraActive(true);
+        
+        text.SetActive(false);
+        LoadLevel();
+        FadeOut();
     }
 
     public void FadeIn()
@@ -64,5 +52,11 @@ public class PreGameMenu : MonoBehaviour
         _mainMenuAnimator.Stop();
         _mainMenuAnimator.clip = fadeOutAnimationClip;
         _mainMenuAnimator.Play();
+    }
+
+    public void LoadLevel()
+    {
+        GameManager.Instance.StartGame();
+        
     }
 }
