@@ -9,7 +9,7 @@ public class QuestGenerator : MonoBehaviour
     public List<int> itemsToCollect = new List<int>();
     public int maxItemAmount;
 
-    private void Awake()
+    private void Start()
     {
         for (int i = 0; i < maxItemAmount; i++)
         {

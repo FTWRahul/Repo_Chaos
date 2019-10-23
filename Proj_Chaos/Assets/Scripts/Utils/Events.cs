@@ -26,4 +26,8 @@ public class Events
     [System.Serializable] public class EventCharacterHasItemChange : UnityEvent { }
     
     [System.Serializable] public class EventGameState : UnityEvent<GameManager.GameState, GameManager.GameState> { }
+    
+    [System.Serializable] public class EventRightItem : UnityEvent { }
+    
+    [System.Serializable] public class EventWrongItem : UnityEvent { }
 }

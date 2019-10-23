@@ -2892,6 +2892,7 @@ GameObject:
   - component: {fileID: 2032236652}
   - component: {fileID: 8247179815549446149}
   - component: {fileID: 3455370340198393399}
+  - component: {fileID: 1380588538006269527}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3156,8 +3157,8 @@ MonoBehaviour:
       PublicKeyToken=null
   radius: 5
   timeBetweenSlaps: 2
-  timeIncapacitated: 0.2
-  slapForce: 400
+  timeIncapacitated: 0.1
+  slapForce: 100
   canSlap: 1
 --- !u!114 &8247179815549446149
 MonoBehaviour:
@@ -3197,6 +3198,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aa01b1c53d69ff4aa41f1cd913bfab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1380588538006269527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524553060948681665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc2da5741de7364388bff3b1901cc4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsToCollect: 
+  maxItemAmount: 5
 --- !u!1 &6647853287234485561
 GameObject:
   m_ObjectHideFlags: 0
@@ -3250,6 +3265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6830069450345813158}
+  - component: {fileID: 2892749871517471228}
   m_Layer: 0
   m_Name: ItemHolder
   m_TagString: Untagged
@@ -3264,10 +3280,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8336039443679207160}
-  m_LocalRotation: {x: -0.9515944, y: -0.30735666, z: 0, w: 0}
-  m_LocalPosition: {x: 34.3, y: -22.6, z: 3.9}
+  m_LocalRotation: {x: -0.9515944, y: -0.30735672, z: 0.00000005755362, w: -0.0000001781894}
+  m_LocalPosition: {x: 16.2, y: -8.4, z: -0.7}
   m_LocalScale: {x: 90.909134, y: 90.90918, z: 90.90919}
   m_Children: []
   m_Father: {fileID: 4643793582147003546}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -180, y: 0, z: -35.8}
+--- !u!1818360609 &2892749871517471228
+RotationConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8336039443679207160}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: -180, z: 144.2}
+  m_RotationOffset: {x: 0, y: 0, z: -35.80002}
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_IsContraintActive: 1
+  m_IsLocked: 1
+  m_Sources:
+  - sourceTransform: {fileID: 6524553060948681676}
+    weight: 1
