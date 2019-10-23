@@ -16,6 +16,7 @@ public class Winning : MonoBehaviour
         if (PaperListMenu.Instance.TextOrderedList.TrueForAll(x => x.fontStyle == FontStyles.Strikethrough))
         {
             GameManager.Instance.UpdateState(GameManager.GameState.END);
+            UIManager.Instance.endMenu.text.text = "You win!";
         }
     }
 }

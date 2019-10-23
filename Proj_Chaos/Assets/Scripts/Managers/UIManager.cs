@@ -11,7 +11,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private PauseMenu pauseMenu;
     [SerializeField] private PaperListMenu listMenu;
     [SerializeField] private MainMenu mainMenu;
-    [SerializeField] private EndMenu endMenu;
+     public EndMenu endMenu;
     [SerializeField] private Camera dummyCamera;
 
 
