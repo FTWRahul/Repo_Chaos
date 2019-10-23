@@ -54,6 +54,7 @@ public class PaperListMenu : Singleton<PaperListMenu>
     {
         if (previousState == GameManager.GameState.RUNNING && currentState == GameManager.GameState.OPENLIST)
         {
+            Debug.Log("Here");
             MoveIn();
         }
 

@@ -49,19 +49,23 @@ public class GameManager : Singleton<GameManager>
     
     private void Update()
     {
-        if(currentGameState == GameState.PREGAME) return;
-
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (currentGameState == GameState.RUNNING || currentGameState == GameState.PAUSED)
         {
-            TogglePause();
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                TogglePause();
+            }
         }
-
-        if (currentGameState == GameState.PAUSED) return;
         
-        if (Input.GetKeyDown(KeyCode.Tab))
+        
+        if (currentGameState == GameState.RUNNING || currentGameState == GameState.OPENLIST)
         {
-            ToggleList();
+            if(Input.GetKeyDown(KeyCode.Tab))
+            {
+                ToggleList();
+            }
         }
+        
     }
 
     public void UpdateState(GameState state)
