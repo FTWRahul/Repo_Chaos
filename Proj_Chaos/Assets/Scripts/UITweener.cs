@@ -93,7 +93,12 @@ public class UITweener : MonoBehaviour
 
     private void Scale()
     {
-        throw new NotImplementedException();
+        if (startPositionOffset)
+        {
+            _objectToAnimate.GetComponent<RectTransform>().localScale = from;
+        }
+
+        _tweenObject = LeanTween.scale(_objectToAnimate, to, duration);
     }
 
     private void Fade()
@@ -115,5 +120,30 @@ public class UITweener : MonoBehaviour
     {
         _objectToAnimate.GetComponent<RectTransform>().anchoredPosition = from;
         _tweenObject = LeanTween.move(_objectToAnimate.GetComponent<RectTransform>(), to, duration);
+    }
+
+    private void SwapDirection()
+    {
+        var temp = from;
+        from = to;
+        to = temp;
+    }
+
+    public void Disable()
+    {
+        SwapDirection();
+        HandleTween();
+
+        _tweenObject.setOnComplete(() =>
+        {
+            SwapDirection();
+            gameObject.SetActive(false);
+        });
+    }
+
+    public void Disable(Action onCompleteAction)
+    {
+        SwapDirection();
+        
     }
 }

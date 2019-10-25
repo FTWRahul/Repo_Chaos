@@ -13,8 +13,8 @@ public enum EventType
 
 public class AudioManager : Singleton<AudioManager>
 {
+    public AudioSource musicSource;
     [SerializeField] private AudioSource crowdSource;
-    [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource eventEffectsSource;
 
     [SerializeField] public AudioClip menuClip;
