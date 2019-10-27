@@ -3,26 +3,13 @@ using UnityEngine.Events;
 
 public class Events
 {
-    [System.Serializable] public class EventFadeComplete : UnityEvent<bool> { }
-    
-    [System.Serializable] public class EventMoveList : UnityEvent<bool> { }
-    
-    
-    
-    
+    //Game Manager
     [System.Serializable] public class EventGameState : UnityEvent<GameManager.GameState, GameManager.GameState> { }
-    
-    [System.Serializable] public class EventRightItem : UnityEvent { }
-    
-    [System.Serializable] public class EventWrongItem : UnityEvent { }
-    [System.Serializable] public class EventItemRemoved : UnityEvent { }
-    
-    
+    [System.Serializable] public class EventQuestMenuMove : UnityEvent { }
     //Input system events
     [System.Serializable] public class EventItemSelection : UnityEvent <GameObject> { }
     [System.Serializable] public class EventPickupCall : UnityEvent { }
     [System.Serializable] public class EventSlapCall : UnityEvent { }
-    
     
     //Pickup
     [System.Serializable] public class EventItemPickup : UnityEvent { }
@@ -37,5 +24,12 @@ public class Events
     //Animation
     [System.Serializable] public class EventUpdateMovement : UnityEvent <float, float> { }
     
+    //Quest
+    [System.Serializable] public class EventQuestDone : UnityEvent { }
+    [System.Serializable] public class EventQuestLost : UnityEvent { }
     
+    //Exit
+    [System.Serializable] public class EventRightItem : UnityEvent { }
+    [System.Serializable] public class EventWrongItem : UnityEvent { }
+    [System.Serializable] public class EventItemRemoved : UnityEvent { }
 }

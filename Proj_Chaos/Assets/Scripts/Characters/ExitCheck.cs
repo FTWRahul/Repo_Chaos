@@ -1,13 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using TMPro;
 
 public class ExitCheck : MonoBehaviour
 {
+    [HideInInspector] public Events.EventQuestLost onQuestLost;
     public Events.EventWrongItem onWrongItem;
     public Events.EventRightItem onRightItem;
     public Events.EventItemRemoved onItemRemoved;
-    
+
+    private PlayerController _player;
+
     private void OnTriggerEnter(Collider other)
     {
         PickupSystem pickupSystem = other.GetComponent<PickupSystem>();
@@ -29,14 +33,20 @@ public class ExitCheck : MonoBehaviour
             }
             else if(other.GetComponent<PlayerController>() && spawnedItem)
             {
+                if (!_player)
+                {
+                    _player = other.GetComponent<PlayerController>();
+                }
+                
                 bool isRightItem = false;
+                
                 QuestGenerator questGenerator = other.GetComponent<QuestGenerator>();
                 
                 for (int i = 0; i < questGenerator.itemsToCollect.Count; i++)
                 {
                     if (spawnedItem.itemId == questGenerator.itemsToCollect[i])
                     {
-                        FindObjectOfType<QuestMenu>().StrikeItem(i);
+                        FindObjectOfType<QuestMenu>().StrikeItem(spawnedItem.itemId);
                         questGenerator.itemsToCollect.RemoveAt(i);
                         isRightItem = true;
                         break;
@@ -53,6 +63,7 @@ public class ExitCheck : MonoBehaviour
                 }
                 
                 onItemRemoved.Invoke();
+                CheckForPlayerItems();
             }
         }
     }
@@ -61,5 +72,17 @@ public class ExitCheck : MonoBehaviour
     {
         yield return new WaitForSeconds(.2f);
         spawnedItem.Vanish();
+    }
+
+    void CheckForPlayerItems()
+    {
+        QuestGenerator questGenerator = _player.GetComponent<QuestGenerator>();
+        foreach (var item in questGenerator.itemsToCollect)
+        {
+            if (ItemsDatabase.Instance.itemsOnScene[item] < 1)
+            {
+                onQuestLost?.Invoke();
+            }
+        }
     }
 }

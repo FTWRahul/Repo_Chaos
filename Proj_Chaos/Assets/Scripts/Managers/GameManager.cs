@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+
 public class GameManager : Singleton<GameManager>
 {
     public enum GameState
@@ -10,22 +12,23 @@ public class GameManager : Singleton<GameManager>
         MENU,
         PREGAME,
         RUNNING,
-        OPENLIST,
+        QUEST,
         PAUSED,
         END
     }
+    
+    [HideInInspector] public Events.EventGameState OnGameStateChanged; //Event on change game state
 
     public string mainLevelName;
     public string mainMenuName;
     public GameObject[] systemPrefabs; //List of the managers need to instantiate
-    public Events.EventGameState OnGameStateChanged; //Event on change game state
+    
+    [SerializeField] private GameState currentGameState = GameState.MENU; //Current game state
     public GameState CurrentGameState 
     {
         get => currentGameState;
-        private set => currentGameState = value;
     }
     
-    [SerializeField] private GameState currentGameState = GameState.PREGAME; //Current game state
     private List<GameObject> _instancedSystemPrefabs = new List<GameObject>(); //List of instances managers
     private List<AsyncOperation> _asyncOperations = new List<AsyncOperation>();
     
@@ -38,29 +41,26 @@ public class GameManager : Singleton<GameManager>
     
     private void InstantiateSystemPrefabs()
     {
-        GameObject go;
-        
         foreach (var prefab in systemPrefabs)
         {
-            go = Instantiate(prefab);
+            var go = Instantiate(prefab);
             _instancedSystemPrefabs.Add(go);
         }
     }
     
     private void Update()
     {
-        if (currentGameState == GameState.RUNNING || currentGameState == GameState.PAUSED)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (currentGameState == GameState.RUNNING || currentGameState == GameState.PAUSED)
             {
                 TogglePause();
             }
         }
         
-        
-        if (currentGameState == GameState.RUNNING || currentGameState == GameState.OPENLIST)
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if(Input.GetKeyDown(KeyCode.Tab))
+            if(currentGameState == GameState.RUNNING || currentGameState == GameState.QUEST)
             {
                 ToggleList();
             }
@@ -77,6 +77,7 @@ public class GameManager : Singleton<GameManager>
         {
             case GameState.MENU:
                 Time.timeScale = 1f;
+                Cursor.visible = true;
                 break;
                 
             case GameState.PREGAME:
@@ -85,9 +86,10 @@ public class GameManager : Singleton<GameManager>
             
             case GameState.RUNNING:
                 Time.timeScale = 1f;
+                Cursor.visible = false;
                 break;
             
-            case GameState.OPENLIST:
+            case GameState.QUEST:
                 Time.timeScale = 1f;
                 break;
             
@@ -97,13 +99,14 @@ public class GameManager : Singleton<GameManager>
             
             case GameState.END:
                 Time.timeScale = 0.0f;
+                Cursor.visible = true;
                 break;
             
             default:
                 throw new ArgumentOutOfRangeException();
         }
         
-        OnGameStateChanged.Invoke(currentGameState, previousGameState);
+        OnGameStateChanged.Invoke(previousGameState, currentGameState);
     }
 
     public void LoadLevel(string levelName)
@@ -161,7 +164,7 @@ public class GameManager : Singleton<GameManager>
     
     private void ToggleList()
     {
-        UpdateState(currentGameState == GameState.RUNNING? GameState.OPENLIST: GameState.RUNNING);
+        UpdateState(currentGameState == GameState.RUNNING? GameState.QUEST: GameState.RUNNING);
     }
     
     public void QuitGame()

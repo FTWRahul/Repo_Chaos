@@ -53,7 +53,26 @@ public class PlayerController : MonoBehaviour
             exitCheck.onWrongItem.AddListener(_characterAudio.PlayWrong);
             exitCheck.onRightItem.AddListener(_characterAudio.PlayMoney);
             exitCheck.onItemRemoved.AddListener(_pickupSystem.DropItem);
+            exitCheck.onQuestLost.AddListener(PlayerFail);
             //add onitem remove check for winning loose
         }
+        
+        _questGenerator.onQuestDone.AddListener(PlayerWon);
+    }
+
+    private void PlayerWon()
+    {
+        UIManager.Instance.currentEndType = EndType.WIN;
+        GameManager.Instance.UpdateState(GameManager.GameState.END);
+        AudioManager.Instance.PlayEvent(EventType.WIN);
+        //some winning events
+    }
+
+    private void PlayerFail()
+    {
+        UIManager.Instance.currentEndType = EndType.FAIL;
+        GameManager.Instance.UpdateState(GameManager.GameState.END);
+        AudioManager.Instance.PlayEvent(EventType.FAIL);
+        //some winning events
     }
 }

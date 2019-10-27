@@ -1,28 +1,37 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class EndMenu : MonoBehaviour
 {
-    [SerializeField] private Button quitButton;
-    public TextMeshProUGUI text;
+    [SerializeField] private GameObject winPanel;
+    [SerializeField] private GameObject failPanel;
 
     private void OnEnable()
     {
-        quitButton.onClick.AddListener(HandleQuitClicked);
+        EnablePanel();
     }
 
-    private void OnDisable()
+    public void EnablePanel()
     {
-        quitButton.onClick.RemoveListener(HandleQuitClicked);
-    }
-    
-    
-    private void HandleQuitClicked()
-    {
-        GameManager.Instance.QuitGame();
+        switch (UIManager.Instance.currentEndType)
+        {
+            case EndType.WIN:
+                failPanel.SetActive(false);
+                winPanel.SetActive(true);
+                break;
+            
+            case EndType.FAIL:
+                winPanel.SetActive(false);
+                failPanel.SetActive(true);
+                break;
+
+            case EndType.NONE:
+                failPanel.SetActive(false);
+                winPanel.SetActive(false);
+                break;
+            
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 }

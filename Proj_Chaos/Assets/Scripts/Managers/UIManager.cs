@@ -1,50 +1,37 @@
 ﻿using UnityEngine;
 
+public enum EndType
+{
+    NONE,
+    WIN,
+    FAIL
+}
+
 public class UIManager : Singleton<UIManager>
 {
-    public Events.EventFadeComplete onMainMenuFadeComplete;
+    public EndType currentEndType = EndType.NONE;
     
     [SerializeField] private PreGameMenu preGameMenu;
     [SerializeField] private PauseMenu pauseMenu;
     [SerializeField] private QuestMenu questMenu;
-    [SerializeField] private MainMenu mainMenu;
-     public EndMenu endMenu;
-    [SerializeField] private Camera dummyCamera;
-
+    [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject endMenu;
 
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
-    }
-
-    private void OnEnable()
-    {
+        
+        questMenu.onQuestMenuMove.AddListener(AudioManager.Instance.PlayQuestMenuClip);
         GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChanged);
     }
     
-    private void OnDisable()
-    {
-        GameManager.Instance.OnGameStateChanged.RemoveListener(HandleGameStateChanged);
-    }
-
-
-    private void Update()
-    {
-        if(GameManager.Instance.CurrentGameState != GameManager.GameState.PREGAME) return;
-        
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GameManager.Instance.UpdateState(GameManager.GameState.RUNNING);
-        }
-    }
-    
-    private void HandleGameStateChanged(GameManager.GameState currentState, GameManager.GameState previousState)
+    private void HandleGameStateChanged(GameManager.GameState previousState, GameManager.GameState currentState)
     {
         pauseMenu.gameObject.SetActive(currentState == GameManager.GameState.PAUSED);
-        mainMenu.gameObject.SetActive(currentState == GameManager.GameState.MENU);
+        mainMenu.SetActive(currentState == GameManager.GameState.MENU);
         endMenu.gameObject.SetActive(currentState == GameManager.GameState.END);
         
-        if (currentState == GameManager.GameState.OPENLIST || currentState == GameManager.GameState.RUNNING)
+        if (currentState == GameManager.GameState.QUEST || currentState == GameManager.GameState.RUNNING)
         {
             questMenu.gameObject.SetActive(true);
         }
@@ -67,6 +54,5 @@ public class UIManager : Singleton<UIManager>
     public void StartGame()
     {
         GameManager.Instance.StartGame();
-        GameManager.Instance.UpdateState(GameManager.GameState.RUNNING);
     }
 }

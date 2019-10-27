@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class QuestMenu : Singleton<QuestMenu>
 {
-    public Events.EventMoveList onMoveList;
+    public Events.EventQuestMenuMove onQuestMenuMove;
     
     public List<TextMeshProUGUI> textOrderedList;
     [SerializeField] private GameObject textPrefab;
@@ -44,34 +44,43 @@ public class QuestMenu : Singleton<QuestMenu>
     
     private void HandleGameStateChanged(GameManager.GameState currentState, GameManager.GameState previousState)
     {
-        if (previousState == GameManager.GameState.RUNNING && currentState == GameManager.GameState.OPENLIST)
+        if (previousState == GameManager.GameState.RUNNING && currentState == GameManager.GameState.QUEST)
         {
             MoveIn();
         }
 
-        if (previousState == GameManager.GameState.OPENLIST && currentState == GameManager.GameState.RUNNING)
+        if (previousState == GameManager.GameState.QUEST && currentState == GameManager.GameState.RUNNING)
         {
             MoveOut();
         }
     }
 
-    public void MoveIn()
+    private void MoveIn()
     {
+        onQuestMenuMove?.Invoke();
        _uiTweener.HandleTween();
        _uiTweener.SwapDirection();
     }
-    
-    public void MoveOut()
+
+    private void MoveOut()
     {
+        onQuestMenuMove?.Invoke();
         _uiTweener.HandleTween();
         _uiTweener.SwapDirection();
     }
 
     public void StrikeItem(int id)
     {
-        if (textOrderedList[id].fontStyle != FontStyles.Strikethrough)
+        foreach (var textMeshProUgui in textOrderedList)
         {
-            textOrderedList[id].fontStyle = FontStyles.Strikethrough;
+            if (textMeshProUgui.text.Trim().Equals( ItemsDatabase.Instance.database[id].itemName))
+            {
+                if (textMeshProUgui.fontStyle != FontStyles.Strikethrough)
+                {
+                    textMeshProUgui.fontStyle = FontStyles.Strikethrough;
+                }
+            }
         }
+        
     }
 }

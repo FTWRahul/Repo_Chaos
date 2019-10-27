@@ -348,7 +348,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4538518732403495663}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -3345,7 +3345,6 @@ GameObject:
   - component: {fileID: 6061475906539240993}
   - component: {fileID: 693166646012325907}
   - component: {fileID: 3838680509979981939}
-  - component: {fileID: 2244410340706363681}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -3567,18 +3566,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc2da5741de7364388bff3b1901cc4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onQuestDone:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Events+EventQuestDone, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   itemsToCollect: 
   maxItemAmount: 5
---- !u!114 &2244410340706363681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9000074491254814181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07fe388458b7b0849aad31b77483d665, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}

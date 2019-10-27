@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,16 @@ public class PauseMenu : MonoBehaviour
     {
         resumeButton.onClick.AddListener(HandleResumeClicked);
         quitButton.onClick.AddListener(HandleQuitClicked);
+    }
+
+    private void OnEnable()
+    {
+        Cursor.visible = true;
+    }
+
+    private void OnDisable()
+    {
+        Cursor.visible = false;
     }
 
     private void HandleResumeClicked()

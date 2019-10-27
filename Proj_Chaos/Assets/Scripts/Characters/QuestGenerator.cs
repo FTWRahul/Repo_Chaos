@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class QuestGenerator : MonoBehaviour
 {
+    [HideInInspector] public Events.EventQuestDone onQuestDone;
     public List<int> itemsToCollect = new List<int>();
     [SerializeField] private int maxItemAmount;
 
@@ -23,6 +24,14 @@ public class QuestGenerator : MonoBehaviour
             {
                 maxItemAmount++;
             }
+        }
+    }
+
+    private void Update()
+    {
+        if (itemsToCollect.Count <= 0)
+        {
+            onQuestDone?.Invoke();
         }
     }
 }
