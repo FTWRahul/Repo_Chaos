@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using DG.Tweening;
-using Vector3 = System.Numerics.Vector3;
+﻿using UnityEngine;
+
 
 public class SpawnedItem : MonoBehaviour
 {
@@ -36,9 +32,9 @@ public class SpawnedItem : MonoBehaviour
 
     public void Vanish()
     {
+        LTDescr _tweenObject = LeanTween.move(gameObject, gameObject.transform.position + Vector3.up * 10, 2.5f);
         Destroy(gameObject, .8f);
-        
-        transform.DOLocalMove( transform.position + UnityEngine.Vector3.up * 2, 1f).SetEase(Ease.OutSine);
+        /*transform.DOLocalMove( transform.position + UnityEngine.Vector3.up * 2, 1f).SetEase(Ease.OutSine);*/
         //transform.GetComponent<MeshRenderer>().material.DOFade(0f, .5f).SetEase(Ease.Linear);
     }
 

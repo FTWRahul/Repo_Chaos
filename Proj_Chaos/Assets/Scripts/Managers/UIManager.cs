@@ -11,7 +11,7 @@ public class UIManager : Singleton<UIManager>
 {
     public EndType currentEndType = EndType.NONE;
     
-    [SerializeField] private PreGameMenu preGameMenu;
+    [SerializeField] private GameObject preGameMenu;
     [SerializeField] private PauseMenu pauseMenu;
     [SerializeField] private QuestMenu questMenu;
     [SerializeField] private GameObject mainMenu;
@@ -27,6 +27,8 @@ public class UIManager : Singleton<UIManager>
     
     private void HandleGameStateChanged(GameManager.GameState previousState, GameManager.GameState currentState)
     {
+        Debug.Log(currentState);
+        preGameMenu.gameObject.SetActive(currentState == GameManager.GameState.PREGAME);
         pauseMenu.gameObject.SetActive(currentState == GameManager.GameState.PAUSED);
         mainMenu.SetActive(currentState == GameManager.GameState.MENU);
         endMenu.gameObject.SetActive(currentState == GameManager.GameState.END);

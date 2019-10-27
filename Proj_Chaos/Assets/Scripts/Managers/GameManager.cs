@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -138,7 +139,7 @@ public class GameManager : Singleton<GameManager>
         
         Debug.Log("Load complete");
     }
-
+    
     
     protected override void OnDestroy()
     {
@@ -155,6 +156,7 @@ public class GameManager : Singleton<GameManager>
     public void StartGame()
     {
         LoadLevel(mainLevelName);
+        UpdateState(GameState.PREGAME);
     }
     
     public void TogglePause()

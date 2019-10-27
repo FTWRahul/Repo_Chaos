@@ -38,7 +38,7 @@ public class SlapSystem : MonoBehaviour
         onCharacterSlap.Invoke();
         StartCoroutine(SlapCoroutine());
         
-        Vector3 rayOriginPosition = rayOrigin.position;
+/*        Vector3 rayOriginPosition = rayOrigin.position;
 
         if (Physics.Raycast(rayOriginPosition, Vector3.forward, out var hit, rayDistance))
         {
@@ -47,8 +47,8 @@ public class SlapSystem : MonoBehaviour
             {
                 StartCoroutine(characterHit.Slapped(hit.transform.position - transform.position));
             }
-        }
-        /*Collider[] overlappedObjects = Physics.OverlapSphere(transform.position, radius);
+        }*/
+        Collider[] overlappedObjects = Physics.OverlapSphere(transform.position, radius);
 
         foreach (Collider col in overlappedObjects)
         {
@@ -59,7 +59,7 @@ public class SlapSystem : MonoBehaviour
                 StartCoroutine(slapSystem.Slapped(col.transform.position - transform.position));
                 break;
             }
-        }*/
+        }
     }
 
     private IEnumerator SlapCoroutine()

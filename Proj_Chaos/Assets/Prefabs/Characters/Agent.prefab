@@ -213,6 +213,11 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Events+EventSlapCall, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  onUpdateMovement:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Events+EventUpdateMovement, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   currentState: 0
   layerMask:
     serializedVersion: 2
@@ -248,7 +253,7 @@ MonoBehaviour:
     m_TypeName: Events+EventCharacterEndSlap, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   canSlap: 0
-  radius: 5
+  radius: 2
   timeBetweenSlaps: 5
   timeIncapacitated: 0.5
   slapForce: 400
@@ -294,6 +299,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc2da5741de7364388bff3b1901cc4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onQuestDone:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Events+EventQuestDone, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   itemsToCollect: 
   maxItemAmount: 1
 --- !u!114 &4667982709043180572

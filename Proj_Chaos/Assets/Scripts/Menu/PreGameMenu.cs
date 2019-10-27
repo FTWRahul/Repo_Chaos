@@ -11,16 +11,6 @@ public class PreGameMenu : MonoBehaviour
 
     [SerializeField] private GameObject text;
     
-    private void OnEnable()
-    {
-        GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChanged);
-    }
-
-    private void OnDisable()
-    {
-        GameManager.Instance.OnGameStateChanged.RemoveListener(HandleGameStateChanged);
-    }
-    
     private void HandleGameStateChanged(GameManager.GameState currentState, GameManager.GameState previousState)
     {
         if (previousState == GameManager.GameState.PREGAME && currentState == GameManager.GameState.RUNNING)
