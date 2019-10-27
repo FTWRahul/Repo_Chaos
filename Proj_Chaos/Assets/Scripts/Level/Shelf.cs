@@ -48,17 +48,17 @@ public class Shelf : MonoBehaviour
     {
         for (int i = 0; i < positions.Count; i++)
         {
-            ItemId tempGo = Instantiate(item.itemPrefab, positions[i].position, transform.rotation).GetComponent<ItemId>();
+            SpawnedItem tempGo = Instantiate(item.itemPrefab, positions[i].position, transform.rotation).GetComponent<SpawnedItem>();
             tempGo.transform.parent = this.transform;
             tempGo.Init(item.itemId);
             
-            if(ItemsDatabase.Instance.objectsInScene.ContainsKey(item.itemId))
+            if(ItemsDatabase.Instance.itemsOnScene.ContainsKey(item.itemId))
             {
-                ItemsDatabase.Instance.objectsInScene[item.itemId]++;
+                ItemsDatabase.Instance.itemsOnScene[item.itemId]++;
             }
             else
             {
-                ItemsDatabase.Instance.objectsInScene.Add(item.itemId, 1);
+                ItemsDatabase.Instance.itemsOnScene.Add(item.itemId, 1);
             }
         }
     }

@@ -7,16 +7,11 @@ using Random = UnityEngine.Random;
 
 public class MapFactory : MonoBehaviour
 {
+    public Func<bool> finishSpawn;
     public List<Transform> spawnPositions;
     public List<GameObject> sectionPrefab;
-    public static List<Section> spawnnedSections = new List<Section>();
-
-    [ContextMenu("GenerateMap")]
-    private void Start()
-    {
-        SpawnShelves();
-    }
-
+    public static List<Section> spawnedSections = new List<Section>();
+    
     public void SpawnShelves()
     {
         for (int i = 0; i < spawnPositions.Count; i++)
@@ -29,17 +24,18 @@ public class MapFactory : MonoBehaviour
             if (tempGo != null)
             {
                 tempGo.Inti();
-                spawnnedSections.Add(tempGo);
+                spawnedSections.Add(tempGo);
             }
         }
+        Debug.Log(spawnedSections.Count);
     }
 
     [ContextMenu("Check Items")]
     public void CheckItemsInScene()
     {
-        for (int i = 0; i < ItemsDatabase.Instance.objectsInScene.Count; i++)
+        for (int i = 0; i < ItemsDatabase.Instance.itemsOnScene.Count; i++)
         {
-            Debug.Log(ItemsDatabase.Instance.objectsInScene[i]);
+            Debug.Log(ItemsDatabase.Instance.itemsOnScene[i]);
         }
     }
 }

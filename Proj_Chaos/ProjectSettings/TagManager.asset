@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Shelf
   - Exit
+  - Item
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -17,9 +19,9 @@ TagManager:
   - 
   - Shelf
   - PostProcessing
-  - 
-  - 
-  - 
+  - Exit
+  - Item
+  - Wall
   - 
   - 
   - 

@@ -22,7 +22,7 @@ public class ItemSpawner : MonoBehaviour
             for (int j = 0; j < loop; j++)
             {
                 Vector3 pos = new Vector3(Random.Range(-25,25), 0, Random.Range(-25,25));
-                ItemId go = Instantiate(itemPrefab, pos, Quaternion.identity).GetComponent<ItemId>();
+                SpawnedItem go = Instantiate(itemPrefab, pos, Quaternion.identity).GetComponent<SpawnedItem>();
                 go.Init(item.Value.itemId);
             }
         }

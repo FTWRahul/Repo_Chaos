@@ -44,7 +44,7 @@ public class UITweener : MonoBehaviour
         HandleTween();
     }
 
-    private void HandleTween()
+    public void HandleTween()
     {
         if (_objectToAnimate == null)
         {
@@ -122,7 +122,7 @@ public class UITweener : MonoBehaviour
         _tweenObject = LeanTween.move(_objectToAnimate.GetComponent<RectTransform>(), to, duration);
     }
 
-    private void SwapDirection()
+    public void SwapDirection()
     {
         var temp = from;
         from = to;

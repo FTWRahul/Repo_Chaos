@@ -7,64 +7,26 @@ using Random = UnityEngine.Random;
 public class CharacterAnimation : MonoBehaviour
 {
     private Animator _animator;
-    private PickUp _pickUp;
-    private Slapper _slapper;
-    private NavMeshAgent _navMeshAgent;
-    private CharacterController _characterController;
-    private CharacterAudio _characterAudio;
-    
+
     private static readonly int HorizontalF = Animator.StringToHash("Horizontal_f");
     private static readonly int VerticalF = Animator.StringToHash("Vertical_f");
     private static readonly int Index = Animator.StringToHash("Index");
-    private static readonly int Drop = Animator.StringToHash("Drop");
     private static readonly int PickUp = Animator.StringToHash("PickUp");
     private static readonly int Slap = Animator.StringToHash("Slap");
     private static readonly int Slapped = Animator.StringToHash("Slapped");
     private static readonly int HasItem = Animator.StringToHash("HasItem");
-
-
+    
     public void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
-        _pickUp = GetComponent<PickUp>();
-        _slapper = GetComponent<Slapper>();
-
-        if (GetComponent<CharacterController>())
-        {
-            _characterController = GetComponent<CharacterController>();
-        }
-        else
-        {
-            _navMeshAgent = GetComponent<NavMeshAgent>();
-        }
     }
-    
-    public void OnEnable()
+
+    public void UpdateMovement(float horizontal, float vertical)
     {
-        _pickUp.onCharacterPickup.AddListener(SetPickUpTrigger);
-        _pickUp.onHasItemChange.AddListener(SetItemBool);
+        _animator.SetFloat(HorizontalF, horizontal);
+        _animator.SetFloat(VerticalF, vertical);
         
-        _slapper.OnCharacterSlap.AddListener(SetSlapTrigger);
-        _slapper.OnCharacterSlapped.AddListener(SetSlappedTrigger);
-    }
-
-    public void OnDisable()
-    {
-        _pickUp.onCharacterPickup.RemoveListener(SetPickUpTrigger);
-        _pickUp.onHasItemChange.RemoveListener(SetItemBool);
-        
-        _slapper.OnCharacterSlap.RemoveListener(SetSlapTrigger);
-        _slapper.OnCharacterSlapped.RemoveListener(SetSlappedTrigger);
-    }
-
-    private void Update()
-    {
-        UpdateAnimation();
-    }
-
-    private void UpdateAnimation()
-    {
-        if (_characterController)
+        /*if (_characterController)
         {
             _animator.SetFloat(HorizontalF, Input.GetAxisRaw("Horizontal"));
             _animator.SetFloat(VerticalF, Input.GetAxisRaw("Vertical"));
@@ -82,27 +44,27 @@ public class CharacterAnimation : MonoBehaviour
                 _animator.SetFloat(VerticalF, 0);
             }
                 
-        }
+        }*/
     }
-    
 
-    void SetItemBool()
-    {
-        _animator.SetBool(HasItem, _pickUp.hasItem);
-    }
-    
-    void SetPickUpTrigger()
+    public void SetPickUpTrigger()
     {
         _animator.SetTrigger(PickUp);
+        _animator.SetBool(HasItem, true);
     }
 
-    void SetSlapTrigger()
+    public void SetDropTrigger()
+    {
+        _animator.SetBool(HasItem, false);
+    }
+
+    public void SetSlapTrigger()
     {
         _animator.SetFloat(Index,Random.Range(0,3));
         _animator.SetTrigger(Slap);
     }
 
-    void SetSlappedTrigger()
+    public void SetSlappedTrigger()
     {
         _animator.SetFloat(Index,Random.Range(0,1));
         _animator.SetTrigger(Slapped);

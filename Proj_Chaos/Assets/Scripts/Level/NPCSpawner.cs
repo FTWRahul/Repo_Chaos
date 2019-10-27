@@ -4,18 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-
 public class NPCSpawner : MonoBehaviour
 {
-    public GameObject npcPrefab;
-    public int spawnAmount;
-    public float spawnInterval;
-    public int maxNPCS;
-    public float radius;
+    public static int spawnedAmount;
+    
+    [SerializeField] private GameObject npcPrefab;
+    [SerializeField] private Transform[] spawnPositions;
+    [SerializeField] private int spawnAmount;
+    [SerializeField] private float spawnInterval;
+    [SerializeField] private int maxNpc;
+    [SerializeField] private float radius;
 
-    public static List<GameObject> spawnedNPCS = new List<GameObject>();
-
-    private void Start()
+    public void Init()
     {
         StartCoroutine(SpawnNpcs());
     }
@@ -24,17 +24,26 @@ public class NPCSpawner : MonoBehaviour
     {
         while (true)
         {
-            if (spawnedNPCS.Count < maxNPCS)
+            if (spawnedAmount < maxNpc)
             {
-                for (int i = 0; i < spawnAmount; i++)
+                Vector2 randomPos = Random.insideUnitCircle * radius;
+                Vector3 spawnPos = spawnPositions[Random.Range(0, spawnPositions.Length)].position +
+                                   new Vector3(randomPos.x, 0, randomPos.y);
+                
+                GameObject go = Instantiate(npcPrefab, spawnPos, Quaternion.identity);
+                spawnedAmount++;
+                go.name = "Npc" + spawnedAmount;
+                /*for (int i = 0; i < spawnAmount; i++)
                 {
                     Vector2 randomPos = Random.insideUnitCircle * radius;
                     Vector3 spawnPos = transform.position + new Vector3(randomPos.x, 0, randomPos.y);
-                    spawnedNPCS.Add(Instantiate(npcPrefab, spawnPos, Quaternion.identity));
+                    Instantiate(npcPrefab, spawnPos, Quaternion.identity);
+                    spawnedAmount++;
+                    
                     yield return new WaitForEndOfFrame();
-                }
+                }*/
             }
-            yield return new WaitForSeconds(spawnInterval);
+            yield return new WaitForEndOfFrame();
         }
     }
 }

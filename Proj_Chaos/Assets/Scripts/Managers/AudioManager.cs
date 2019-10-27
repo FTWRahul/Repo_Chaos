@@ -29,7 +29,6 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] public AudioClip paperClip;
 
     private CharacterController _characterController;
-
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -40,8 +39,8 @@ public class AudioManager : Singleton<AudioManager>
     public void InitPlayer()
     {
         _characterController = FindObjectOfType<CharacterController>();
-        _characterController.GetComponent<ExitCheck>().OnRightItem.AddListener(RightItem);
-        _characterController.GetComponent<ExitCheck>().OnWrongItem.AddListener(WrongItem);
+        _characterController.GetComponent<ExitCheck>().onRightItem.AddListener(RightItem);
+        _characterController.GetComponent<ExitCheck>().onWrongItem.AddListener(WrongItem);
     }
 
     private void OnEnable()
@@ -49,15 +48,15 @@ public class AudioManager : Singleton<AudioManager>
         GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChanged);
     }
 
-    private void OnDisable()
+/*    private void OnDisable()
     {
         GameManager.Instance.OnGameStateChanged.RemoveListener(HandleGameStateChanged);
         if (_characterController != null)
         {
-            _characterController.GetComponent<ExitCheck>().OnRightItem.AddListener(RightItem);
-            _characterController.GetComponent<ExitCheck>().OnWrongItem.AddListener(WrongItem);
+            _characterController.GetComponent<ExitCheck>().onRightItem.AddListener(RightItem);
+            _characterController.GetComponent<ExitCheck>().onWrongItem.AddListener(WrongItem);
         }
-    }
+    }*/
 
     private void RightItem()
     {

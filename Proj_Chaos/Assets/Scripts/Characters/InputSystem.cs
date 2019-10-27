@@ -2,19 +2,51 @@
 
 public class InputSystem : MonoBehaviour
 {
-    public Events.EventEPressed OnEPressed;
-    public Events.EventLMBPressed OnLMBPressed;
+    [HideInInspector] public Events.EventItemSelection onItemSelection;
+    [HideInInspector] public Events.EventPickupCall onPickupCall;
+    [HideInInspector] public Events.EventSlapCall onSlapCall;
     
+    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private Transform point;
+
+    private Camera _camera;
+    private SpawnedItem _selection;
+
+    private void Start()
+    {
+        _camera = Camera.main;
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            OnEPressed.Invoke();
+            onPickupCall.Invoke();
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            OnLMBPressed.Invoke();
+            onSlapCall.Invoke();
+        }
+
+        if (_selection != null)
+        {
+            _selection.Dehighlight();
+            _selection = null;
+        }
+        
+        Ray ray = _camera.ScreenPointToRay(point.position);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 7, layerMask))
+        {
+            SpawnedItem selection = hit.transform.GetComponent<SpawnedItem>();
+            if (selection.isAvailable)
+            {
+                selection.Highlight();
+                _selection = selection;
+
+                onItemSelection?.Invoke(selection.gameObject);
+            }
         }
     }
 }

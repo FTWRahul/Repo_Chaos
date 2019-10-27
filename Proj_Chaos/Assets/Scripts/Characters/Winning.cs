@@ -11,13 +11,13 @@ public class Winning : MonoBehaviour
     {
         ExitCheck exit = FindObjectOfType<ExitCheck>();
         player = FindObjectOfType<CharacterController>().GetComponent<QuestGenerator>();
-        exit.OnRightItem.AddListener(CheckIfWon);
-        exit.OnItemRemoved.AddListener(CheckIfLost);
+        exit.onRightItem.AddListener(CheckIfWon);
+        exit.onItemRemoved.AddListener(CheckIfLost);
     }
 
     public void CheckIfWon()
     {
-        if (PaperListMenu.Instance.TextOrderedList.TrueForAll(x => x.fontStyle == FontStyles.Strikethrough))
+        if (QuestMenu.Instance.textOrderedList.TrueForAll(x => x.fontStyle == FontStyles.Strikethrough))
         {
             GameManager.Instance.UpdateState(GameManager.GameState.END);
             UIManager.Instance.endMenu.text.text = "You win!";
@@ -27,7 +27,7 @@ public class Winning : MonoBehaviour
     {
         for (int i = 0; i < player.itemsToCollect.Count; i++)
         {
-            if (ItemsDatabase.Instance.objectsInScene[player.itemsToCollect[i]] < 1)
+            if (ItemsDatabase.Instance.itemsOnScene[player.itemsToCollect[i]] < 1)
             {
                 GameManager.Instance.UpdateState(GameManager.GameState.END);
                 UIManager.Instance.endMenu.text.text = "You Loose ;_;";

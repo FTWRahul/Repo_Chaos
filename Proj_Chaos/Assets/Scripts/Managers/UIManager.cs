@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -9,7 +6,7 @@ public class UIManager : Singleton<UIManager>
     
     [SerializeField] private PreGameMenu preGameMenu;
     [SerializeField] private PauseMenu pauseMenu;
-    [SerializeField] private PaperListMenu listMenu;
+    [SerializeField] private QuestMenu questMenu;
     [SerializeField] private MainMenu mainMenu;
      public EndMenu endMenu;
     [SerializeField] private Camera dummyCamera;
@@ -49,25 +46,19 @@ public class UIManager : Singleton<UIManager>
         
         if (currentState == GameManager.GameState.OPENLIST || currentState == GameManager.GameState.RUNNING)
         {
-            listMenu.gameObject.SetActive(true);
+            questMenu.gameObject.SetActive(true);
         }
         else
         {
-            listMenu.gameObject.SetActive(false);
+            questMenu.gameObject.SetActive(false);
         }
     }
 
-    public void Init()
+    public void InitQuestMenu()
     {
-        listMenu.Init();
+        questMenu.Init();
     }
     
-
-    public void SetDummyCameraActive(bool active)
-    {
-        dummyCamera.gameObject.SetActive(active);
-    }
-
     public void Quit()
     {
         GameManager.Instance.QuitGame();
