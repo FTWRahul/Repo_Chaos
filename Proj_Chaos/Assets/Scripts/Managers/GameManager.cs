@@ -35,6 +35,7 @@ public class GameManager : Singleton<GameManager>
     
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         DontDestroyOnLoad(gameObject);
         InstantiateSystemPrefabs();
         UpdateState(GameState.MENU);
@@ -79,6 +80,7 @@ public class GameManager : Singleton<GameManager>
             case GameState.MENU:
                 Time.timeScale = 1f;
                 Cursor.visible = true;
+
                 break;
                 
             case GameState.PREGAME:

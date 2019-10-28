@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 public class PickupSystem : MonoBehaviour
@@ -40,7 +41,6 @@ public class PickupSystem : MonoBehaviour
         _itemHold.transform.rotation = Quaternion.identity;
         _itemHold.GetComponent<Rigidbody>().isKinematic = true;
         _itemHold.isAvailable = false;
-        
     }
 
     public void DropItem()
@@ -52,10 +52,11 @@ public class PickupSystem : MonoBehaviour
             _itemHold.transform.SetParent(null); 
             _itemHold.GetComponent<Rigidbody>().isKinematic = false; 
             _itemHold.isAvailable = true;
-            _itemHold = null; 
-            _desireItem = null;
         }
 
+        _itemHold = null; 
+        _desireItem = null;
+        
         ChangePickupBool(true);
     }
 

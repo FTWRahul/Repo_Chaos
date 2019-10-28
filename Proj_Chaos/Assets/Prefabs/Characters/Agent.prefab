@@ -255,7 +255,7 @@ MonoBehaviour:
   canSlap: 0
   radius: 2
   timeBetweenSlaps: 5
-  timeIncapacitated: 0.5
+  timeIncapacitated: 1
   slapForce: 400
   rayOrigin: {fileID: 1519060694}
   rayDistance: 2

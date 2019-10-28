@@ -5,7 +5,6 @@ using UnityEngine;
 public class AgentController : MonoBehaviour
 {
     private AgentBehaviour _agentBehaviour;
-    private MovementInput _movementInput;
     private PickupSystem _pickupSystem;
     private SlapSystem _slapSystem;
     private CharacterAnimation _animation;
@@ -40,8 +39,10 @@ public class AgentController : MonoBehaviour
         //Slap event
         _slapSystem.onCharacterSlap.AddListener(_animation.SetSlapTrigger);
         _slapSystem.onCharacterSlapped.AddListener(_animation.SetSlappedTrigger);
+        _slapSystem.onCharacterSlapped.AddListener(_agentBehaviour.DisableNavMesh);
         _slapSystem.onCharacterSlapped.AddListener(_characterAudio.PlaySlap);
         _slapSystem.onCharacterSlapped.AddListener(_pickupSystem.DropItem);
         _slapSystem.onCharacterEndSlap.AddListener(_agentBehaviour.LookForItem);
+        _slapSystem.onCharacterEndSlap.AddListener(_agentBehaviour.EnableNavMesh);
     }
 }

@@ -10,60 +10,59 @@ public class ExitCheck : MonoBehaviour
     public Events.EventRightItem onRightItem;
     public Events.EventItemRemoved onItemRemoved;
 
-    private PlayerController _player;
-
     private void OnTriggerEnter(Collider other)
     {
         PickupSystem pickupSystem = other.GetComponent<PickupSystem>();
-        
         if (pickupSystem)
         {
-            SpawnedItem spawnedItem = pickupSystem.GetItemHold();
-
-            if (spawnedItem)
-            {
-                ItemsDatabase.Instance.itemsOnScene[spawnedItem.itemId]--;
-                StartCoroutine(StartWithDelay(spawnedItem));
-            }
-            
             if (other.GetComponent<AgentController>())
             {
-                Destroy(other.gameObject, 2f);
+                SpawnedItem spawnedItem = pickupSystem.GetItemHold();
+                if (spawnedItem)
+                {
+                    ItemsDatabase.Instance.itemsOnScene[spawnedItem.itemId]--;
+                    StartCoroutine(StartWithDelay(spawnedItem));
+                }
+                
+                Destroy(other.gameObject, 1.5f);
                 NPCSpawner.spawnedAmount--;
             }
-            else if(other.GetComponent<PlayerController>() && spawnedItem)
+            else if(other.GetComponent<PlayerController>())
             {
-                if (!_player)
-                {
-                    _player = other.GetComponent<PlayerController>();
-                }
-                
-                bool isRightItem = false;
-                
+                PlayerController _player = other.GetComponent<PlayerController>();
                 QuestGenerator questGenerator = other.GetComponent<QuestGenerator>();
-                
-                for (int i = 0; i < questGenerator.itemsToCollect.Count; i++)
+                SpawnedItem spawnedItem = pickupSystem.GetItemHold();
+
+                if (spawnedItem)
                 {
-                    if (spawnedItem.itemId == questGenerator.itemsToCollect[i])
+                    bool isRightItem = false;
+
+                    for (int i = 0; i < questGenerator.itemsToCollect.Count; i++)
                     {
-                        FindObjectOfType<QuestMenu>().StrikeItem(spawnedItem.itemId);
-                        questGenerator.itemsToCollect.RemoveAt(i);
-                        isRightItem = true;
-                        break;
+                        if (spawnedItem.itemId == questGenerator.itemsToCollect[i])
+                        {
+                            FindObjectOfType<QuestMenu>().StrikeItem(spawnedItem.itemId);
+                            questGenerator.itemsToCollect.RemoveAt(i);
+                            isRightItem = true;
+                            break;
+                        }
                     }
+                    
+                    if (isRightItem)
+                    {
+                        onRightItem.Invoke();
+                    }
+                    else
+                    {
+                        onWrongItem.Invoke();
+                    }
+                    
+                    onItemRemoved.Invoke();
+                    ItemsDatabase.Instance.itemsOnScene[spawnedItem.itemId]--;
+                    StartCoroutine(StartWithDelay(spawnedItem));
                 }
                 
-                if (isRightItem)
-                {
-                    onRightItem.Invoke();
-                }
-                else
-                {
-                    onWrongItem.Invoke();
-                }
-                
-                onItemRemoved.Invoke();
-                CheckForPlayerItems();
+                CheckForPlayerItems(questGenerator);
             }
         }
     }
@@ -74,9 +73,8 @@ public class ExitCheck : MonoBehaviour
         spawnedItem.Vanish();
     }
 
-    void CheckForPlayerItems()
+    private void CheckForPlayerItems(QuestGenerator questGenerator)
     {
-        QuestGenerator questGenerator = _player.GetComponent<QuestGenerator>();
         foreach (var item in questGenerator.itemsToCollect)
         {
             if (ItemsDatabase.Instance.itemsOnScene[item] < 1)

@@ -9,11 +9,13 @@ public enum AgentState
     START,
     RUNNING_TO_SECTION,
     RUNNING_TO_ITEM,
-    RUNNING_TO_EXIT
+    RUNNING_TO_EXIT,
 }
 
 public class AgentBehaviour : MonoBehaviour
-    {
+{
+        public bool canMove;
+        
         [HideInInspector] public Events.EventItemSelection onItemSelection;
         [HideInInspector] public Events.EventPickupCall onPickupCall;
         [HideInInspector] public Events.EventSlapCall onSlapCall;
@@ -57,29 +59,47 @@ public class AgentBehaviour : MonoBehaviour
             UpdateState(AgentState.RUNNING_TO_SECTION);
         }
 
+        public void EnableNavMesh()
+        {
+            _navMeshAgent.enabled = true;
+            UpdateDestination();
+        }
+
+        public void DisableNavMesh()
+        {
+            _navMeshAgent.enabled = false;
+        }
+
         private void Update()
         {
-            onUpdateMovement.Invoke(0, Math.Abs(_navMeshAgent.velocity.magnitude) > 0 ? 1 : 0);
-
-            if (IsAtDestination())
+            if (_navMeshAgent.enabled)
             {
-                switch (currentState)
+                onUpdateMovement.Invoke(0, Math.Abs(_navMeshAgent.velocity.magnitude) > 0 ? 1 : 0);
+
+                if (IsAtDestination())
                 {
-                    case AgentState.RUNNING_TO_SECTION:
-                        LookForItem();
-                        break;
-                    case AgentState.RUNNING_TO_ITEM:
-                        if (_desireItem != null)
-                        {
-                            FaceTarget(_desireItem.transform.position); 
-                            onPickupCall.Invoke();
-                        }
-                        else
-                        {
-                            UpdateState(AgentState.RUNNING_TO_SECTION);
-                        }
-                        break;
+                    switch (currentState)
+                    {
+                        case AgentState.RUNNING_TO_SECTION:
+                            LookForItem();
+                            break;
+                        case AgentState.RUNNING_TO_ITEM:
+                            if (_desireItem != null)
+                            {
+                                FaceTarget(_desireItem.transform.position); 
+                                onPickupCall.Invoke();
+                            }
+                            else
+                            {
+                                UpdateState(AgentState.RUNNING_TO_SECTION);
+                            }
+                            break;
+                    }
                 }
+            }
+            else
+            {
+                onUpdateMovement.Invoke(0, 0);
             }
 
             if (_pickupSystem.GetItemHold())
@@ -162,14 +182,17 @@ public class AgentBehaviour : MonoBehaviour
 
         private void UpdateDestination()
         {
-            if (_navMeshAgent.isOnNavMesh)
+            if (_navMeshAgent.enabled)
             {
-                _navMeshAgent.SetDestination(_distance);
-            }
-            else
-            {
-                Destroy(gameObject);
-                NPCSpawner.spawnedAmount--;
+                if (_navMeshAgent.isOnNavMesh)
+                {
+                    _navMeshAgent.SetDestination(_distance);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                    NPCSpawner.spawnedAmount--;
+                }
             }
         }
 

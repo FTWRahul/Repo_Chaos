@@ -6,24 +6,21 @@ using UnityEngine;
 
 public class PlayerFollower : MonoBehaviour
 {
-    [SerializeField] private Transform characterCinemachine;
-    private CinemachineFreeLook cinemachineFreeLook;
-    public Transform target;
-    private float vAngle;
+    public float vAngle;
+    public float minAngle;
+    public float maxAngle;
+    
+    public float mouseSensitivity;
 
-    public void Start()
+    private void LateUpdate()
     {
-        /*characterCinemachine = FindObjectOfType<InputSystem>().characterRoot;*/
-        cinemachineFreeLook = FindObjectOfType<CinemachineFreeLook>();
-        cinemachineFreeLook.Follow = characterCinemachine;
-        cinemachineFreeLook.LookAt = characterCinemachine;
-    }
-
-/*    private void LateUpdate()
-    {
-        transform.position = target.position;
+        if (GameManager.Instance.CurrentGameState == GameManager.GameState.PAUSED ||
+            GameManager.Instance.CurrentGameState == GameManager.GameState.END) return;
+        
+        transform.Rotate(-Input.GetAxis("Mouse Y") * Time.deltaTime * mouseSensitivity, 0 , 0);
+        
         vAngle -= Input.GetAxis("Mouse Y");
-        vAngle = Mathf.Clamp(vAngle, 0, 30);
-        transform.rotation = Quaternion.Euler(vAngle, target.eulerAngles.y, 0);
-    }*/
+        vAngle = Mathf.Clamp(vAngle, minAngle, maxAngle);
+        transform.rotation = Quaternion.Euler(vAngle, transform.eulerAngles.y, transform.eulerAngles.z);
+    }
 }

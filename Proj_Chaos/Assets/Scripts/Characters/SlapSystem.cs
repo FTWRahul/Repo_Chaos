@@ -38,16 +38,6 @@ public class SlapSystem : MonoBehaviour
         onCharacterSlap.Invoke();
         StartCoroutine(SlapCoroutine());
         
-/*        Vector3 rayOriginPosition = rayOrigin.position;
-
-        if (Physics.Raycast(rayOriginPosition, Vector3.forward, out var hit, rayDistance))
-        {
-            SlapSystem characterHit = hit.transform.GetComponent<SlapSystem>();
-            if (characterHit != null && characterHit != this)
-            {
-                StartCoroutine(characterHit.Slapped(hit.transform.position - transform.position));
-            }
-        }*/
         Collider[] overlappedObjects = Physics.OverlapSphere(transform.position, radius);
 
         foreach (Collider col in overlappedObjects)
@@ -76,8 +66,9 @@ public class SlapSystem : MonoBehaviour
 
     private IEnumerator Slapped(Vector3 dir)
     {
+        Debug.Log(gameObject.name + " was slapped");
         onCharacterSlapped.Invoke();
-
+        
         _rigidbody.isKinematic = false;
         _rigidbody.AddForce(dir.normalized * slapForce, ForceMode.Impulse);
         

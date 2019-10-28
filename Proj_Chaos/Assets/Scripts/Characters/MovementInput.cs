@@ -9,7 +9,7 @@ public class MovementInput : MonoBehaviour
     
     [SerializeField] private float moveSpeed;
     [SerializeField] private float t = 1;
-    
+    [SerializeField] private float mouseSensitivity;
     private Camera _camera;
     private CharacterController _characterController;
     
@@ -21,9 +21,9 @@ public class MovementInput : MonoBehaviour
 
     private void Update()
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, _camera.transform.eulerAngles.y, 0), t);
+        /*transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, _camera.transform.eulerAngles.y, 0), t);*/
          /*= new Vector3( 0,  _camera.transform.eulerAngles.y, 0);*/
-        /*transform.Rotate(0, Input.GetAxis("Mouse X") * Time.deltaTime * mouseSensitivity, 0);*/
+        transform.Rotate(0, Input.GetAxis("Mouse X") * Time.deltaTime * mouseSensitivity, 0);
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");

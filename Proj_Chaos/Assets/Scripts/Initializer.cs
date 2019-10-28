@@ -9,7 +9,7 @@ public class Initializer : MonoBehaviour
     [SerializeField] public GameObject playerPrefab;
     [SerializeField] private Transform spawnLocation;
     [SerializeField] private MapFactory mapFactory;
-    [SerializeField] private PlayerFollower _playerFollower;
+
     private void Start()
     {
         Init();
