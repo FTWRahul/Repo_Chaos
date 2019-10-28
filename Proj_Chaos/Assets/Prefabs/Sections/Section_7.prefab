@@ -327,11 +327,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 139805387802184223}
     m_Modifications:
-    - target: {fileID: 6596107567024603226, guid: 33631d3f4724bc4418d562af07abb678,
-        type: 3}
-      propertyPath: m_Name
-      value: SectionPointLight (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 6606826426544927464, guid: 33631d3f4724bc4418d562af07abb678,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -387,10 +382,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6596107567024603226, guid: 33631d3f4724bc4418d562af07abb678,
+        type: 3}
+      propertyPath: m_Name
+      value: SectionPointLight (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 7404658285815325652, guid: 33631d3f4724bc4418d562af07abb678,
         type: 3}
       propertyPath: m_SpotAngle
-      value: 59.247623
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7404658285815325652, guid: 33631d3f4724bc4418d562af07abb678,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7404658285815325652, guid: 33631d3f4724bc4418d562af07abb678,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33631d3f4724bc4418d562af07abb678, type: 3}
@@ -407,11 +417,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 139805387802184223}
     m_Modifications:
-    - target: {fileID: 6596107567024603226, guid: 33631d3f4724bc4418d562af07abb678,
-        type: 3}
-      propertyPath: m_Name
-      value: SectionPointLight
-      objectReference: {fileID: 0}
     - target: {fileID: 6606826426544927464, guid: 33631d3f4724bc4418d562af07abb678,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -467,10 +472,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6596107567024603226, guid: 33631d3f4724bc4418d562af07abb678,
+        type: 3}
+      propertyPath: m_Name
+      value: SectionPointLight
+      objectReference: {fileID: 0}
     - target: {fileID: 7404658285815325652, guid: 33631d3f4724bc4418d562af07abb678,
         type: 3}
       propertyPath: m_SpotAngle
-      value: 59.247623
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7404658285815325652, guid: 33631d3f4724bc4418d562af07abb678,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7404658285815325652, guid: 33631d3f4724bc4418d562af07abb678,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33631d3f4724bc4418d562af07abb678, type: 3}
