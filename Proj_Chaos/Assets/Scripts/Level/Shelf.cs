@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public enum ShelfType
 {
@@ -32,34 +33,39 @@ public class Shelf : MonoBehaviour
         SetTexture(item);
         if (item.typeSize == TypeSize.SMALL)
         {
-            PlaceItem(smallItemPosition, item);
+            PlaceItem(smallItemPosition, item, .30f);
         }
         else if (item.typeSize == TypeSize.MEDIUM)
         {
-            PlaceItem(mediumItemPosition, item);
+            PlaceItem(mediumItemPosition, item, .600f);
         }
         else if (item.typeSize == TypeSize.LARGE)
         {
-            PlaceItem(largeItemPosition, item);
+            PlaceItem(largeItemPosition, item, .80f);
         }
     }
 
-    public void PlaceItem(List<Transform> positions, Item item)
+    public void PlaceItem(List<Transform> positions, Item item, float chance)
     {
         for (int i = 0; i < positions.Count; i++)
         {
-            SpawnedItem tempGo = Instantiate(item.itemPrefab, positions[i].position, transform.rotation).GetComponent<SpawnedItem>();
-            tempGo.transform.parent = this.transform;
-            tempGo.Init(item.itemId);
+            float rand = Random.value;
+            if (rand < chance)
+            {
+                SpawnedItem tempGo = Instantiate(item.itemPrefab, positions[i].position, transform.rotation).GetComponent<SpawnedItem>();
+                tempGo.transform.parent = this.transform;
+                tempGo.Init(item.itemId);
             
-            if(ItemsDatabase.Instance.itemsOnScene.ContainsKey(item.itemId))
-            {
-                ItemsDatabase.Instance.itemsOnScene[item.itemId]++;
+                if(ItemsDatabase.Instance.itemsOnScene.ContainsKey(item.itemId))
+                {
+                    ItemsDatabase.Instance.itemsOnScene[item.itemId]++;
+                }
+                else
+                {
+                    ItemsDatabase.Instance.itemsOnScene.Add(item.itemId, 1);
+                }
             }
-            else
-            {
-                ItemsDatabase.Instance.itemsOnScene.Add(item.itemId, 1);
-            }
+            
         }
     }
 
