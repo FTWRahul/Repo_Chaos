@@ -19,34 +19,38 @@ public class InputSystem : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (GameManager.Instance.CurrentGameState == GameManager.GameState.RUNNING)
         {
-            onPickupCall.Invoke();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            onSlapCall.Invoke();
-        }
-
-        if (_selection != null)
-        {
-            _selection.Dehighlight();
-            _selection = null;
-        }
-        
-        Ray ray = _camera.ScreenPointToRay(point.position);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, 7, layerMask))
-        {
-            SpawnedItem selection = hit.transform.GetComponent<SpawnedItem>();
-            if (selection.isAvailable)
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                selection.Highlight();
-                _selection = selection;
+                onPickupCall.Invoke();
+            }
 
-                onItemSelection?.Invoke(selection.gameObject);
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                onSlapCall.Invoke();
+            }
+
+            if (_selection != null)
+            {
+                _selection.Dehighlight();
+                _selection = null;
+            }
+        
+            Ray ray = _camera.ScreenPointToRay(point.position);
+
+            if (Physics.Raycast(ray, out RaycastHit hit, 7, layerMask))
+            {
+                SpawnedItem selection = hit.transform.GetComponent<SpawnedItem>();
+                if (selection.isAvailable)
+                {
+                    selection.Highlight();
+                    _selection = selection;
+
+                    onItemSelection?.Invoke(selection.gameObject);
+                }
             }
         }
+        
     }
 }

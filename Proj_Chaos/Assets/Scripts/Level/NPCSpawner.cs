@@ -10,8 +10,6 @@ public class NPCSpawner : MonoBehaviour
     
     [SerializeField] private GameObject npcPrefab;
     [SerializeField] private Transform[] spawnPositions;
-    [SerializeField] private int spawnAmount;
-    [SerializeField] private float spawnInterval;
     [SerializeField] private int maxNpc;
     [SerializeField] private float radius;
 
@@ -33,15 +31,6 @@ public class NPCSpawner : MonoBehaviour
                 GameObject go = Instantiate(npcPrefab, spawnPos, Quaternion.identity);
                 spawnedAmount++;
                 go.name = "Npc" + spawnedAmount;
-                /*for (int i = 0; i < spawnAmount; i++)
-                {
-                    Vector2 randomPos = Random.insideUnitCircle * radius;
-                    Vector3 spawnPos = transform.position + new Vector3(randomPos.x, 0, randomPos.y);
-                    Instantiate(npcPrefab, spawnPos, Quaternion.identity);
-                    spawnedAmount++;
-                    
-                    yield return new WaitForEndOfFrame();
-                }*/
             }
             yield return new WaitForEndOfFrame();
         }

@@ -1573,6 +1573,7 @@ GameObject:
   - component: {fileID: 222832590612561638}
   - component: {fileID: 114572018630595556}
   - component: {fileID: 114615682490614664}
+  - component: {fileID: 7990676752935883051}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -1683,6 +1684,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &7990676752935883051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087487673931174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5647253af1e9b1842a69f4e2e723cc3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1257677202366108
 GameObject:
   m_ObjectHideFlags: 0
@@ -2031,6 +2044,7 @@ GameObject:
   - component: {fileID: 222702944476158656}
   - component: {fileID: 114869358023239108}
   - component: {fileID: 114161082283702470}
+  - component: {fileID: 4831646070902594516}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -2141,6 +2155,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &4831646070902594516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690569417852610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5647253af1e9b1842a69f4e2e723cc3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1741098236994318
 GameObject:
   m_ObjectHideFlags: 0

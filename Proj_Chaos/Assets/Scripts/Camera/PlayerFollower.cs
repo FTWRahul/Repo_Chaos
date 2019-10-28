@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Cinemachine;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerFollower : MonoBehaviour
 {
@@ -22,5 +18,21 @@ public class PlayerFollower : MonoBehaviour
         vAngle -= Input.GetAxis("Mouse Y");
         vAngle = Mathf.Clamp(vAngle, minAngle, maxAngle);
         transform.rotation = Quaternion.Euler(vAngle, transform.eulerAngles.y, transform.eulerAngles.z);
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            other.GetComponent<MeshRenderer>().enabled = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            other.GetComponent<MeshRenderer>().enabled = true;
+        }
     }
 }

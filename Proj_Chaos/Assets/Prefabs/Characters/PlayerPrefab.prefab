@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 174565365}
   - component: {fileID: 174565364}
   - component: {fileID: 174565363}
-  - component: {fileID: 174565362}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -27,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174565360}
-  m_LocalRotation: {x: 0.10452846, y: 0, z: 0, w: 0.9945219}
-  m_LocalPosition: {x: 0, y: 1.8, z: -3.5}
+  m_LocalRotation: {x: -0.015881801, y: 0, z: 0, w: 0.9998739}
+  m_LocalPosition: {x: 0, y: 1.19, z: -4.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1542785701098285871}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 12, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.82, y: 0, z: 0}
 --- !u!20 &174565365
 Camera:
   m_ObjectHideFlags: 0
@@ -145,43 +144,6 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
---- !u!114 &174565362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 174565360}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShowDebugText: 0
-  m_ShowCameraFrustum: 1
-  m_IgnoreTimeScale: 0
-  m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
-  m_DefaultBlend:
-    m_Style: 1
-    m_Time: 2
-    m_CustomCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  m_CustomBlends: {fileID: 0}
-  m_CameraCutEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Cinemachine.CinemachineBrain+BrainEvent, Cinemachine, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  m_CameraActivatedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Cinemachine.CinemachineBrain+VcamActivatedEvent, Cinemachine, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &152099259570613611
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1542785701098285871}
   - component: {fileID: 1875598867013514279}
+  - component: {fileID: 8200711424342442772}
   m_Layer: 0
   m_Name: CameraBoom
   m_TagString: Untagged
@@ -329,6 +292,19 @@ MonoBehaviour:
   minAngle: 0
   maxAngle: 50
   mouseSensitivity: 50
+--- !u!65 &8200711424342442772
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3546756022142591101}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 1, z: 4.35}
+  m_Center: {x: 0, y: 1.22, z: -2.45}
 --- !u!1 &4538518732403495663
 GameObject:
   m_ObjectHideFlags: 0

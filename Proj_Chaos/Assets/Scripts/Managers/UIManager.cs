@@ -27,7 +27,6 @@ public class UIManager : Singleton<UIManager>
     
     private void HandleGameStateChanged(GameManager.GameState previousState, GameManager.GameState currentState)
     {
-        Debug.Log(currentState);
         preGameMenu.gameObject.SetActive(currentState == GameManager.GameState.PREGAME);
         pauseMenu.gameObject.SetActive(currentState == GameManager.GameState.PAUSED);
         mainMenu.SetActive(currentState == GameManager.GameState.MENU);

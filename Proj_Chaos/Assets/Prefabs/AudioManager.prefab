@@ -40,7 +40,8 @@ AudioSource:
   m_GameObject: {fileID: 959617904862715907}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 94e84757ee133bb4b8dffcce203c6881,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -167,7 +168,8 @@ AudioSource:
   m_GameObject: {fileID: 6121752883825708678}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: b941bbf5401be5d49891fa23bd65cb4a,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -421,7 +423,8 @@ AudioSource:
   m_GameObject: {fileID: 6121752884111798838}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 2ea06f60b8a9ac244a540ad926062da4,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -560,14 +563,11 @@ MonoBehaviour:
   crowdSource: {fileID: 6121752884111798836}
   eventEffectsSource: {fileID: 6121752883825708676}
   menuClip: {fileID: 8300000, guid: 8445b1ab210a15745bb4e427f8d13430, type: 3}
-  elevatorDefaultClip: {fileID: 8300000, guid: 9b40ab4ce3382c34bba60782a23d7488, type: 3}
   elevatorInGameClip: {fileID: 8300000, guid: 453d44dfe081e164483e2c9b0ce26042, type: 3}
   crowdClips:
   - {fileID: 8300000, guid: 6ef275a36a793b649beb1396102921c6, type: 3}
   - {fileID: 8300000, guid: a15fefbfcde7f7c49b76228f6746cc93, type: 3}
   - {fileID: 8300000, guid: c3132972f726f5c48afde0cd1af69bd4, type: 3}
-  moneyClip: {fileID: 8300000, guid: 134508a1f1ccbab4da8d6388ad197fa1, type: 3}
-  wrongItemClip: {fileID: 8300000, guid: edbd1c658adb5bc4181b49165ec735fd, type: 3}
   failGameClip: {fileID: 8300000, guid: 73c4971639a1b33479975e7d5bc11e5e, type: 3}
   winGameClip: {fileID: 8300000, guid: 7b3746b161354864faeca8afffeb2798, type: 3}
   doorClip: {fileID: 8300000, guid: c84651388897c824bba4f24e3489f5cd, type: 3}

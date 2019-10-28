@@ -27,7 +27,6 @@ public class MapFactory : MonoBehaviour
                 spawnedSections.Add(tempGo);
             }
         }
-        Debug.Log(spawnedSections.Count);
     }
 
     [ContextMenu("Check Items")]

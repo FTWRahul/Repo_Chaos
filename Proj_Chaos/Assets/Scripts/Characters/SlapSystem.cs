@@ -66,7 +66,6 @@ public class SlapSystem : MonoBehaviour
 
     private IEnumerator Slapped(Vector3 dir)
     {
-        Debug.Log(gameObject.name + " was slapped");
         onCharacterSlapped.Invoke();
         
         _rigidbody.isKinematic = false;
